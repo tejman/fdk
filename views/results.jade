@@ -1,0 +1,25 @@
+for school in schools
+
+  .result-item.container.col-md-12(data-id=school._id)
+    .row
+      .col-md-3.school-search-pic
+        img(src="http://placehold.it/225x150")
+
+      .col-md-6.school-search-prof
+        ul.list-group
+          li.list-group-item
+            span.badge School
+            | #{school.name}
+          li.list-group-item
+            span.badge District
+            | #{school.agencyName}
+          li.list-group-item
+            span.badge State
+            | #{school.stateFull}
+          li.list-group-item
+            span.badge $ Needed
+            | Current Balance
+
+      .col-md-2.col-md-offset-1.funding-status
+        .empty-img empty img
+        .fill-img fill img

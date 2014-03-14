@@ -1,0 +1,113 @@
+extends layout
+
+
+block content
+
+  p #{school}, #{finance}
+
+  #profile-container
+    .jumbotron.clearfix
+      .container
+        .row
+          .col-md-5
+            img(src="http://placehold.it/300x200")
+          .col-md-7
+            ul.list-group
+              li.list-group-item
+                span.badge School
+                | #{school.name}
+              li.list-group-item
+                span.badge District
+                | #{school.agencyName}
+              li.list-group-item
+                span.badge Zip
+                | #{school.zip}
+              li.list-group-item
+                span.badge State
+                | #{school.stateFull}
+              li.list-group-item
+                a(href="#") Link to school webpage
+        .row
+          .col-md-5
+            table.table-hover.table-condensed
+              tr
+                th School Rank:
+                td hold
+              tr
+                th School Deficit:
+                td hold
+              tr
+                th Cost per Lunch:
+                td hold
+          .col-md-7
+            table.table-hover.table-condensed
+              tr
+                th Ethnic: 
+                td hold
+              tr
+                th Median Income:
+                td $#{finance.medianIncome}
+              tr
+                th Poverty: 
+                td #{finance.poverty}%
+              tr
+                th Food Aid: 
+                td #{finance.snapPercent}%
+
+
+  .row
+    .col-md-12
+      .row
+        .col-md-10.col-md-offset-1.container
+          .row
+            h2 We need lunch money!
+            a.btn.btn-success(href="#") Feed!
+          .row
+            table.table-hover.table-condensed.col-md-4.col-md-offset-2
+              tr
+                th Deliquent Accounts:
+                td hold
+              tr
+                th Avg Deliquent Balance:
+                td hold
+              tr
+                th Cost per Lunch:
+                td hold
+            .col-md-4.col-md-offset2
+              div Empty Image
+              div Fill Image
+      .row
+        .col-md-10.col-md-offset01.container
+          .row
+            h2 Feedback
+            a.btn.btn-success(href="#") Holla!
+          .row
+            ul.comments.list-unstyled
+              li
+                img(src="http://placehold.it/50x50")
+                div
+                  h3 User 1
+                  p timestamp
+                p Comment........
+              li
+                img(src="http://placehold.it/50x50")
+                div
+                  h3 User 1
+                  p timestamp
+                p Comment........
+              li
+                img(src="http://placehold.it/50x50")
+                div
+                  h3 User 1
+                  p timestamp
+                p Comment........
+
+
+
+
+
+
+
+
+
+
