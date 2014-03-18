@@ -23,7 +23,7 @@
     ssi: String,
     cpa: String,
     snap: String,
-    capitalIncome: String,
+    capitaIncome: String,
     poverty: String
   });
 
@@ -31,11 +31,11 @@
     return Math.round((parseInt(this.snap) / parseInt(this.households)) * 100 * 10) / 10;
   });
 
-  financeDataSchema.virtual("ssi.percent").get(function() {
+  financeDataSchema.virtual("ssiPercent").get(function() {
     return parseInt(this.ssi) / parseInt(this.households);
   });
 
-  financeDataSchema.virtual("cpa.percent").get(function() {
+  financeDataSchema.virtual("cpaPercent").get(function() {
     return parseInt(this.cpa) / parseInt(this.households);
   });
 

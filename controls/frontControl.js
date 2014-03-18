@@ -20,7 +20,7 @@
           if (err) {
             res.send(err);
           }
-          console.log(result.snapPercent);
+          console.log(result.ssiPercent, result.cpaPercent);
           return res.render("school-profile", {
             school: doc,
             finance: result
@@ -30,34 +30,6 @@
     },
     find: function(req, res) {
       return res.render("find");
-    },
-    getRandomSchools: function(req, res) {
-      var count, schools, _results;
-      schools = [];
-      count = 0;
-      _results = [];
-      while (count < 3) {
-        count++;
-        _results.push(schoolDataModel.getRandomDoc(function(err, result) {
-          schools.push(result);
-          if (schools.length === 3) {
-            return res.send({
-              schools: schools
-            });
-          }
-        }));
-      }
-      return _results;
-    },
-    search: function(req, res) {
-      return schoolDataModel.find({
-        name: new RegExp(req.query.input, "i")
-      }, function(err, results) {
-        return res.send({
-          schools: results,
-          query: req.query.input
-        });
-      });
     }
   };
 

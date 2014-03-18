@@ -1,11 +1,11 @@
 .col-md-12
+
+  span
+    strong.query-label #{label}
+    em.query-value #{value}
+
+  span#filter-button.glyphicon.glyphicon-filter(data-delay={show: 1000, hide: 0} , data-animation="true", data-toggle="tooltip", title="Show Filters")
+
   span.filter-actions
-    button#reset-filter.btn.btn-embossed.btn-default Reset
-    button#update-filter.btn.btn-embossed.btn-primary Update
-
-  span#filter-button.glyphicon.glyphicon-filter
-
-  strong.query-label #{label}
-  span.query-value #{value}
-
-
+    button#reset-filter.btn.btn-embossed.btn-danger Reset
+    

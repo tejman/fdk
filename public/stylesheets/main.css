@@ -39,6 +39,15 @@ body {
 #filter-button {
   width: 20px;
   margin: 0px 20px;
+  opacity: 0.5;
+  -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=50)";
+  filter: alpha(opacity=50);
+  cursor: pointer;
+}
+#filter-button.active {
+  opacity: 1;
+  -ms-filter: none;
+  filter: none;
 }
 #search-filters {
   display: none;
@@ -58,6 +67,21 @@ body {
 .filter-label .label-value {
   font-size: 12px;
   margin: auto 3px;
+  height: auto;
+  line-height: 1;
+  display: inline;
+  padding: 3px 0px 3px 6px;
+  width: auto;
+  opacity: 1;
+  -ms-filter: none;
+  filter: none;
+  background-color: #fff;
+  color: #34495e;
+}
+.filter-label .form-control.flat:hover,
+.filter-label .hovered {
+  border-color: #f1c40f;
+  color: #b59103;
 }
 .filter-label .theto {
   font-size: 10px;
@@ -73,4 +97,75 @@ body {
 }
 .filter-actions button {
   margin: auto 10px;
+}
+.tooltip-inner {
+  font-size: 10px;
+  padding: 5px 8px;
+  width: auto;
+}
+#pagination {
+  text-align: center;
+  position: fixed;
+  bottom: -36px;
+  right: -86px;
+  -webkit-transform: rotate(-90deg);
+  -moz-transform: rotate(-90deg);
+  -o-transform: rotate(-90deg);
+  -ms-transform: rotate(-90deg);
+  transform: rotate(-90deg);
+  -webkit-transform-origin: 0px 0px;
+  -moz-transform-origin: 0px 0px;
+  -o-transform-origin: 0px 0px;
+  -ms-transform-origin: 0px 0px;
+  transform-origin: 0px 0px;
+}
+#pagination i,
+#pagination span,
+#pagination input {
+  -webkit-transform: rotate(90deg);
+  -moz-transform: rotate(90deg);
+  -o-transform: rotate(90deg);
+  -ms-transform: rotate(90deg);
+  transform: rotate(90deg);
+}
+.pager {
+  line-height: 1;
+  margin-bottom: 0px;
+  background-color: rgba(52,73,94,0.7);
+}
+.pager li {
+  margin-top: 2px;
+}
+.pager li div {
+  height: 41px;
+}
+.pager li input,
+.pager li span,
+.pager li div {
+  color: #fff;
+  margin: auto 5px;
+  display: inline-block;
+  padding: 3px 0px 3px 0px;
+  width: auto;
+  height: auto;
+  background: none;
+  text-align: center;
+}
+.pager li .form-control.flat:hover,
+.pager li .hovered {
+  border-color: #1abc9c;
+  color: #1abc9c;
+}
+.pager li.pages {
+  display: inline-block;
+  overflow: hidden;
+}
+.pager:hover {
+  background-color: rgba(52,73,94,0.9);
+}
+.pager:hover input,
+.pager:hover span,
+.pager:hover div,
+.pager:hover a {
+  color: #fff;
 }

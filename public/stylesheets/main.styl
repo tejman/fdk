@@ -34,6 +34,11 @@ body
 #filter-button
   width 20px
   margin 0px 20px
+  opacity .5
+  cursor pointer
+
+#filter-button.active
+  opacity 1
 
 #search-filters
   display none
@@ -53,6 +58,18 @@ body
   .label-value
     font-size 12px
     margin auto 3px
+    height auto
+    line-height 1
+    display inline
+    padding 3px 0px 3px 6px
+    width auto
+    opacity 1
+    background-color #FFF
+    color #34495e
+
+  .form-control.flat:hover, .hovered
+    border-color #f1c40f
+    color #b59103
 
   .theto
     font-size 10px
@@ -67,5 +84,56 @@ body
   display none
   button
     margin auto 10px
+
+.tooltip-inner
+  font-size 10px
+  padding 5px 8px
+  width auto
+
+#pagination
+  text-align center
+  position fixed
+  bottom -36px
+  right -86px
+  transform rotate(-90deg)
+  transform-origin 0px 0px
+  i, span, input
+    transform rotate(90deg)
+    // transform-origin 0px 0px
+    
+
+.pager 
+  line-height 1
+  margin-bottom 0px
+  background-color rgba(52, 73, 94, .7)
+  // color rgba(255, 255, 255, .6)
+  li
+    margin-top 2px
+    // color rgba(255, 255, 255, .6)
+    div
+      height 41px
+    a
+      // color rgba(255, 255, 255, .6)
+    input, span, div
+      color rgba(255, 255, 255, 1)
+      margin auto 5px
+      display inline-block
+      padding 3px 0px 3px 0px
+      width auto
+      height auto
+      background none
+      text-align center
+    .form-control.flat:hover, .hovered
+      border-color #1ABC9C
+      color #1ABC9C
+  li.pages
+    display inline-block
+    overflow hidden
+
+.pager:hover
+  background-color rgba(52, 73, 94, .9)
+  input, span, div, a
+    color rgba(255, 255, 255, 1)
+  
 
 

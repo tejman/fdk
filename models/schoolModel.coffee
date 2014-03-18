@@ -1,5 +1,7 @@
 mongoose = require "mongoose"
 async = require "async"
+financeDataModel = require "./financeModel.js"
+simpleStats = require "simple-statistics"
 
 schoolDataSchema = new mongoose.Schema({
   name: String,
@@ -38,6 +40,18 @@ schoolDataSchema = new mongoose.Schema({
   multiRacial: String,
   ratio: String
   })
+schoolDataSchema.virtual("grades").get ()->
+  
+  low = if isNaN(+this.lowGrade[0]) then 0 else +this.lowGrade[0]
+  high = if isNaN(+this.highGrade[0]) then 0 else +this.highGrade[0]
+  {low: low, high: high}
+
+schoolDataSchema.virtual("diversity").get ()->
+  coll = this
+  ethnic = [coll.nativeAmerican, coll.asian, coll.hispanic, coll.black, coll.pacificIsland, coll.multiRacial, coll.white]
+  ethnicValues = ethnic.map (item)->
+    (+item)/(+coll.enrollment)
+  simpleStats.standard_deviation(ethnicValues)*100
 
 schoolDataSchema.statics.getAllStates = (done)->
   coll = this

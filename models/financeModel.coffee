@@ -19,16 +19,16 @@ financeDataSchema = new mongoose.Schema({
   ssi: String,
   cpa: String,
   snap: String,
-  capitalIncome: String,
+  capitaIncome: String,
   poverty: String
   })
 financeDataSchema.virtual("snapPercent").get ()->
   return Math.round((parseInt(this.snap)/parseInt(this.households))*100*10)/10
 
-financeDataSchema.virtual("ssi.percent").get ()->
+financeDataSchema.virtual("ssiPercent").get ()->
   return parseInt(this.ssi)/parseInt(this.households)
 
-financeDataSchema.virtual("cpa.percent").get ()->
+financeDataSchema.virtual("cpaPercent").get ()->
   return parseInt(this.cpa)/parseInt(this.households)
 
 

@@ -9,9 +9,14 @@ var path = require('path');
 var stylus = require("stylus");
 var nib = require("nib");
 var mongoose = require("mongoose");
+var passport = require('passport');
+var passportConfig = require('./config/passport');
+
 
 var frontControl = require("./controls/frontControl.js");
-var schoolControl = require("./controls/schoolControl.js")
+var schoolControl = require("./controls/schoolControl.js");
+var searchControl = require("./controls/searchControl.js");
+var authControl = require('./controls/authControl');
 
 
 var app = express();
@@ -34,6 +39,12 @@ app.use(express.json());
 app.use(express.urlencoded());
 app.use(express.methodOverride());
 app.use(express.bodyParser());  //for file upload
+
+app.use(express.cookieParser());
+app.use(express.session({secret: 'super secret string'}));
+app.use(passport.initialize());
+app.use(passport.session());
+
 app.use(app.router);
 app.use(stylus.middleware({
   src: path.join(__dirname, 'public'),
@@ -51,8 +62,20 @@ app.get('/', frontControl.index);
 app.get("/schoolProfile/:id", frontControl.profile);
 app.get("/find", frontControl.find);
 app.get("/popStateDropdown", schoolControl.popStateDropdown);
-app.get("/popRandomSchools", frontControl.getRandomSchools);
-app.get("/search", frontControl.search)
+app.get("/popRandomSchools", searchControl.getRandomSchools);
+app.get("/search", searchControl.search);
+
+
+app.get('/login', authControl.login);
+app.get('/logout', authControl.logout);
+
+app.get('/auth/google', passport.authenticate('google', {scope: ["profile", "email"]}));
+app.get('/auth/google/callback',
+  passport.authenticate('google', {
+    successRedirect: "/",
+    failureRedirect: '/login'
+  })
+);
 
 http.createServer(app).listen(app.get('port'), function(){
   console.log('Express server listening on port ' + app.get('port'));
