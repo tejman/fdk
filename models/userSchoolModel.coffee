@@ -1,11 +1,13 @@
 mongoose = require "mongoose"
+async = require "async"
+schoolDataModel = require "./schoolModel.js"
 
 accountSchema = new mongoose.Schema({
   accountId: String,
   balance: String
 })
 
-userProfileSchema = new mongoose.Schema({
+userSchoolSchema = new mongoose.Schema({
   contactName: String,
   contactPhone: String,
   contactEmail: String,
@@ -22,17 +24,11 @@ userProfileSchema = new mongoose.Schema({
   lunchAccounts: [accountSchema],
   balance: String,
   stdLunchCost: String,
-  asstLunchCost: String
+  asstLunchCost: String,
+  _schoolId: mongoose.Schema.Types.ObjectId
 })
 
 
-userSchema = new mongoose.Schema {
-  userid: String,
-  username: String,
-  userType: String,
-  profile: [userProfileSchema],
-  _schoolId: mongoose.Schema.Types.ObjectId
-  
-}
 
-UserModel = module.exports = mongoose.model "user", userSchema
+userSchoolModel = module.exports = mongoose.model("userschool", userSchoolSchema)
+

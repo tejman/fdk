@@ -11,12 +11,15 @@ var nib = require("nib");
 var mongoose = require("mongoose");
 var passport = require('passport');
 var passportConfig = require('./config/passport');
+var stripe = require('stripe');
 
 
 var frontControl = require("./controls/frontControl.js");
 var schoolControl = require("./controls/schoolControl.js");
 var searchControl = require("./controls/searchControl.js");
-var authControl = require('./controls/authControl');
+var authControl = require('./controls/authControl.js');
+var userControl = require('./controls/userControl.js');
+var stripeControl = require('./controls/stripeControl.js');
 
 
 var app = express();
@@ -68,14 +71,19 @@ app.get("/search", searchControl.search);
 
 app.get('/login', authControl.login);
 app.get('/logout', authControl.logout);
+app.get('/admin', authControl.ensureAuthenticated, frontControl.index)
+
+app.get("/schoolAdmin/:id", userControl.profile)
 
 app.get('/auth/google', passport.authenticate('google', {scope: ["profile", "email"]}));
 app.get('/auth/google/callback',
-  passport.authenticate('google', {
-    successRedirect: "/",
-    failureRedirect: '/login'
-  })
+  passport.authenticate('google', {failureRedirect: '/login'}),
+  authControl.loginSuccess
 );
+
+app.get("/checkout", stripeControl.checkoutForm)
+app.post("/checkout", stripeControl.checkoutSuccess)
+
 
 http.createServer(app).listen(app.get('port'), function(){
   console.log('Express server listening on port ' + app.get('port'));

@@ -1,43 +1,49 @@
 
 .row
-  .col-md-2.filter-item(data-statname = "grades" ,data-step-value="1")
-    span.filter-label Grade Level: 
+  .col-md-2.filter-item(data-num-format="int", data-statname = "grades" ,data-step-value="1")
+    span.filter-label-name Grade Level
+    .slider-stat.ui-slider
+    span.filter-label
       input.input-sm.form-control.flat.label-value.value-min 0
       span.theto to
       input.input-sm.form-control.flat.label-value.value-max 100
-    .slider-stat.ui-slider
 
-  .col-md-2.filter-item(data-statname = "diversity" ,data-step-value="1")
-    span.filter-label Diversity: 
+  .col-md-2.filter-item(data-num-format="int", data-statname = "diversity" ,data-step-value="1")
+    span.filter-label-name Diversity
+    .slider-stat.ui-slider
+    span.filter-label
       input.input-sm.form-control.flat.label-value.value-min 0
       span.theto to
       input.input-sm.form-control.flat.label-value.value-max 100
-    .slider-stat.ui-slider
 
-  .col-md-2.filter-item(data-statname = "capitaIncome" ,data-step-value="5000")
-    span.filter-label Income: 
+  .col-md-2.filter-item(data-num-format="currency", data-statname = "capitaIncome" ,data-step-value="5000")
+    span.filter-label-name Income
+    .slider-stat.ui-slider
+    span.filter-label
       input.input-sm.form-control.flat.label-value.value-min 0
       span.theto to
       input.input-sm.form-control.flat.label-value.value-max 100
-    .slider-stat.ui-slider
 
-  .col-md-2.filter-item(data-statname = "poverty" ,data-step-value="1")
-    span.filter-label Poverty:
+  .col-md-2.filter-item(data-num-format="percent", data-statname = "poverty" ,data-step-value="1")
+    span.filter-label-name Poverty
+    .slider-stat.ui-slider
+    span.filter-label
       input.input-sm.form-control.flat.label-value.value-min 0
       span.theto to
       input.input-sm.form-control.flat.label-value.value-max 100
-    .slider-stat.ui-slider
 
-  .col-md-2.filter-item(data-statname = "snapPercent" ,data-step-value="1")
-    span.filter-label Food Aid: 
+  .col-md-2.filter-item(data-num-format="percent", data-statname = "snapPercent" ,data-step-value="1")
+    span.filter-label-name Food Aid
+    .slider-stat.ui-slider
+    span.filter-label
       input.input-sm.form-control.flat.label-value.value-min 0
       span.theto to
       input.input-sm.form-control.flat.label-value.value-max 100
-    .slider-stat.ui-slider
 
-  .col-md-2.filter-item(data-statname = "unemployed" ,data-step-value="1")
-    span.filter-label Unemployment: 
+  .col-md-2.filter-item(data-num-format="percent", data-statname = "unemployed" ,data-step-value="1")
+    span.filter-label-name Unemployment
+    .slider-stat.ui-slider
+    span.filter-label
       input.input-sm.form-control.flat.label-value.value-min 0
       span.theto to
       input.input-sm.form-control.flat.label-value.value-max 100
-    .slider-stat.ui-slider

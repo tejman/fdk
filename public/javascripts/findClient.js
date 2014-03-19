@@ -5,7 +5,7 @@
     /*
     ************** Function Definitions ***********
      */
-    var currentlyFiltered, filterResults, getFilterValues, getSearch, initFilterValues, initFilters, initWidgets, renderPagination, renderSearchResults, resetFilterItem, searchQuery, searchResults, updateFilterLabel;
+    var currentlyFiltered, filterBarToggle, filterResults, getFilterValues, getSearch, initFilterValues, initFilters, initWidgets, renderPagination, renderSearchResults, resetFilterItem, searchQuery, searchResults, updateFilterLabel;
     searchResults = [];
     searchQuery = new String;
     currentlyFiltered = searchResults;
@@ -29,6 +29,7 @@
             value: searchQuery
           });
           $("#filter-button").tooltip();
+          $("[data-toggle='switch']").wrap('<div class="switch" />').parent().bootstrapSwitch();
           jade.render($("#search-filters")[0], "filterBar");
           initWidgets();
           initFilters();
@@ -38,7 +39,7 @@
             $(elem).css("margin-left", "0");
           }
           $("#search-filters input").prop('disabled', true);
-          return renderSearchResults(searchResults);
+          return filterResults(searchResults, getFilterValues());
         }
       });
     };
@@ -98,7 +99,7 @@
             setTimeout(function() {
               return filterItem.find(".label-value").removeClass("hovered");
             }, 500);
-            return filterResults(searchResults);
+            return filterResults(searchResults, getFilterValues());
           },
           slide: function(e, ui) {
             var filterItem, handleIndex, rangeValue;
@@ -112,9 +113,19 @@
       }
     };
     updateFilterLabel = function(filterItem, rangeValue, newValue) {
-      var input;
+      var format, input, prettyValue;
       input = filterItem.find("input.value-" + rangeValue);
-      $(input).val(newValue);
+      format = filterItem.attr("data-num-format");
+      if (format === "int") {
+        prettyValue = newValue;
+      }
+      if (format === "percent") {
+        prettyValue = newValue + "%";
+      }
+      if (format === "currency") {
+        prettyValue = "$" + newValue.toString().split('').reverse().join('').replace(/(\d{3}(?!$))/g, '$1,').split('').reverse().join('');
+      }
+      $(input).val(prettyValue);
       return $(input).attr("size", $(input).val().length);
     };
     initFilters = function() {
@@ -202,20 +213,32 @@
       updateFilterLabel(parentElem, "min", $(slideElem).slider("values", 0));
       return updateFilterLabel(parentElem, "max", $(slideElem).slider("values", 1));
     };
-    getFilterValues = function() {
+    getFilterValues = function(reset) {
       var $slider, userFilters;
-      $slider = $(".slider-stat");
-      return userFilters = $slider.map(function(ind, item) {
-        return {
-          name: $(item).closest(".filter-item").attr("data-statname"),
-          min: $(item).slider("values", "0"),
-          max: $(item).slider("values", "1")
-        };
-      });
+      if ($("#filter-switch").find(".switch-animate").hasClass("switch-off")) {
+        $slider = $(".slider-stat");
+        return userFilters = $slider.map(function(ind, item) {
+          return {
+            name: $(item).closest(".filter-item").attr("data-statname"),
+            min: $(item).slider("option", "min"),
+            max: $(item).slider("option", "max")
+          };
+        });
+      } else {
+        console.log("is filtering");
+        $slider = $(".slider-stat");
+        return userFilters = $slider.map(function(ind, item) {
+          return {
+            name: $(item).closest(".filter-item").attr("data-statname"),
+            min: $(item).slider("values", "0"),
+            max: $(item).slider("values", "1")
+          };
+        });
+      }
     };
-    filterResults = function(searchResults) {
-      var filtered, userFilters;
-      userFilters = getFilterValues();
+    filterResults = function(searchResults, userFilters) {
+      var filtered;
+      console.log(userFilters);
       filtered = searchResults.filter(function(result, index) {
         var filterTests;
         filterTests = userFilters.map(function(ind, item) {
@@ -235,8 +258,28 @@
         return !_.contains(filterTests, false);
       });
       currentlyFiltered = filtered;
-      console.log("check: ", currentlyFiltered);
       return renderSearchResults(filtered);
+    };
+    filterBarToggle = function() {
+      return $("#filter-button").attr("data-original-title", function(ind, oldAttr) {
+        if (oldAttr === "Show Filters") {
+          $("#search-filters").slideDown({
+            done: function() {
+              return $("#search-filters").css("overflow", "visible");
+            }
+          });
+          $(".filter-actions").fadeIn();
+          return "Hide Filters";
+        } else {
+          $("#search-filters").slideUp({
+            done: function() {
+              return $("#search-filters").css("overflow", "visible");
+            }
+          });
+          $(".filter-actions").fadeOut();
+          return "Show Filters";
+        }
+      });
     };
 
     /*
@@ -268,10 +311,16 @@
     **************** Event Handlers ********************
      */
     $("#search-button").on("click", function() {
+      if ($("#filter-button").attr("data-original-title") === "Hide Filters") {
+        $("#filter-button").trigger("click");
+      }
       return getSearch($("#search-bar").val());
     });
     $("#search-bar").on("keypress", function(e) {
       if (e.keyCode === 13) {
+        if ($("#filter-button").attr("data-original-title") === "Hide Filters") {
+          $("#filter-button").trigger("click");
+        }
         return getSearch($(this).val());
       }
     });
@@ -281,19 +330,11 @@
     });
     $(document).on("click", "#filter-button", function() {
       $(this).toggleClass("active");
-      $(this).attr("data-original-title", function(ind, oldAttr) {
-        if (oldAttr === "Show Filters") {
-          return "Hide Filters";
-        } else {
-          return "Show Filters";
-        }
-      });
-      $("#search-filters").slideToggle({
-        done: function() {
-          return $("#search-filters").css("overflow", "visible");
-        }
-      });
-      return $(".filter-actions").fadeToggle();
+      return filterBarToggle();
+    });
+    $(document).on("change", "#filter-switch .switch", function(e) {
+      console.log($(this).find(".switch-animate").attr("class"));
+      return filterResults(searchResults, getFilterValues());
     });
     $(document).on("keyup", ".pager input", function(e) {
       var currentResults, newPage, total, _ref;

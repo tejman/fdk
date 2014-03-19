@@ -6,7 +6,7 @@ module.exports = {
     if req.isAuthenticated()
       res.redirect "/"
     else
-      res.send "login"
+      res.render "login"
 
   ,loginSuccess: (req,res)->
     console.log "loginSuccess"
@@ -17,15 +17,15 @@ module.exports = {
     res.logout()
     res.redirect "/login"
 
-  ,ensureAuthenticated: (req,res)->
+  ,ensureAuthenticated: (req,res, next)->
     console.log "ensureAuthenticated"
-    if req.isAuthenticated
+    if req.isAuthenticated()
       return next()
     res.redirect "/login"
 
-  ,ensureAuthenticatedAjax: (req,res)->
+  ,ensureAuthenticatedAjax: (req,res, next)->
     console.log "ensureAuthenticatedAjax"
-    if req.isAuthenticated
+    if req.isAuthenticated()
       return next()
     res.send 401
 

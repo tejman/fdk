@@ -26,6 +26,7 @@ $ ->
         # Render query menu
         jade.render $("#query-menu")[0], "queryMenu", {label: "Showing Results For:", value: searchQuery}
         $("#filter-button").tooltip()
+        $("[data-toggle='switch']").wrap('<div class="switch" />').parent().bootstrapSwitch()
 
         # Render filter elements
         jade.render $("#search-filters")[0], "filterBar"
@@ -35,7 +36,7 @@ $ ->
           $(elem).css "margin-left", "0"
 
         $("#search-filters input").prop('disabled', true);
-        renderSearchResults(searchResults)
+        filterResults(searchResults, getFilterValues())
     }
 
   renderSearchResults = (finalResults, pageNum)->
@@ -71,6 +72,7 @@ $ ->
     $pagination.find(".previous a").css("border-right", $pagination.find(".next a").css("border-left"))
     # $pagination.css({left: (($(window).width()/2)-(parseInt($pagination.css("width"))/2)).toString()+"px"})
 
+    # $pagination.css({top: $("#search-results").parent().offset().top})
   initWidgets = ()->
 
     $slider = $(".slider-stat")
@@ -88,7 +90,7 @@ $ ->
           setTimeout(()-> 
             filterItem.find(".label-value").removeClass("hovered")
           ,500)
-          filterResults(searchResults)
+          filterResults(searchResults, getFilterValues())
 
         ,slide: (e, ui)->
 
@@ -104,8 +106,14 @@ $ ->
 
   updateFilterLabel = (filterItem, rangeValue, newValue)->
     input = filterItem.find("input.value-"+rangeValue)
+    format = filterItem.attr("data-num-format")
 
-    $(input).val(newValue)
+    if format is "int" then prettyValue = newValue
+    if format is "percent" then prettyValue = newValue+"%"
+    if format is "currency"
+      prettyValue = "$"+newValue.toString().split('').reverse().join('').replace(/(\d{3}(?!$))/g, '$1,').split('').reverse().join('')
+
+    $(input).val(prettyValue)
 
     $(input).attr("size", $(input).val().length)
 
@@ -181,17 +189,27 @@ $ ->
     updateFilterLabel(parentElem, "min", $(slideElem).slider("values", 0))
     updateFilterLabel(parentElem, "max", $(slideElem).slider("values", 1))
 
-  getFilterValues = ()->
-    $slider = $(".slider-stat")
-    userFilters = $slider.map (ind, item)->
-      {
-        name: $(item).closest(".filter-item").attr("data-statname"),
-        min: $(item).slider("values", "0"),
-        max: $(item).slider("values", "1")
-      }
+  getFilterValues = (reset)->
+    if $("#filter-switch").find(".switch-animate").hasClass("switch-off")
+      $slider = $(".slider-stat")
+      userFilters = $slider.map (ind, item)->
+        {
+          name: $(item).closest(".filter-item").attr("data-statname"),
+          min: $(item).slider("option", "min"),
+          max: $(item).slider("option", "max")
+        }
+    else
+      console.log "is filtering"
+      $slider = $(".slider-stat")
+      userFilters = $slider.map (ind, item)->
+        {
+          name: $(item).closest(".filter-item").attr("data-statname"),
+          min: $(item).slider("values", "0"),
+          max: $(item).slider("values", "1")
+        }
 
-  filterResults = (searchResults)->
-    userFilters = getFilterValues()
+  filterResults = (searchResults, userFilters)->
+    console.log userFilters
 
     filtered = searchResults.filter (result, index)->
       filterTests = userFilters.map (ind, item)->
@@ -209,10 +227,24 @@ $ ->
       !_.contains filterTests, false
 
     currentlyFiltered = filtered
-    console.log "check: ", currentlyFiltered
     renderSearchResults(filtered)
 
-
+  filterBarToggle = ()->
+    $("#filter-button").attr "data-original-title", (ind, oldAttr)->
+      if oldAttr is "Show Filters"
+        $("#search-filters").slideDown({
+          done: ()->
+            $("#search-filters").css "overflow", "visible"
+          })
+        $(".filter-actions").fadeIn()
+        return "Hide Filters"
+      else
+        $("#search-filters").slideUp({
+          done: ()->
+            $("#search-filters").css "overflow", "visible"
+          })
+        $(".filter-actions").fadeOut()
+        return "Show Filters"
 
 
   ###
@@ -241,11 +273,15 @@ $ ->
   ###
 
   $("#search-button").on "click", ()->
+    if $("#filter-button").attr("data-original-title") is "Hide Filters"
+      $("#filter-button").trigger("click")
     getSearch $("#search-bar").val()
 
 
   $("#search-bar").on "keypress", (e)->
     if e.keyCode is 13
+      if $("#filter-button").attr("data-original-title") is "Hide Filters"
+        $("#filter-button").trigger("click")
       getSearch $(this).val()
 
   $(document).on "click", ".result-item", ()->
@@ -255,17 +291,12 @@ $ ->
 
   $(document).on "click", "#filter-button", ()->
     $(this).toggleClass("active")
-    $(this).attr "data-original-title", (ind, oldAttr)->
-      if oldAttr is "Show Filters"
-        return "Hide Filters"
-      else
-        return "Show Filters"
+    filterBarToggle()
 
-    $("#search-filters").slideToggle({
-      done: ()->
-        $("#search-filters").css "overflow", "visible"
-      })
-    $(".filter-actions").fadeToggle()
+
+  $(document).on "change", "#filter-switch .switch", (e)->
+    console.log $(this).find(".switch-animate").attr("class")
+    filterResults(searchResults, getFilterValues())
 
 
 

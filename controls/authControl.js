@@ -6,7 +6,7 @@
       if (req.isAuthenticated()) {
         return res.redirect("/");
       } else {
-        return res.send("login");
+        return res.render("login");
       }
     },
     loginSuccess: function(req, res) {
@@ -18,16 +18,16 @@
       res.logout();
       return res.redirect("/login");
     },
-    ensureAuthenticated: function(req, res) {
+    ensureAuthenticated: function(req, res, next) {
       console.log("ensureAuthenticated");
-      if (req.isAuthenticated) {
+      if (req.isAuthenticated()) {
         return next();
       }
       return res.redirect("/login");
     },
-    ensureAuthenticatedAjax: function(req, res) {
+    ensureAuthenticatedAjax: function(req, res, next) {
       console.log("ensureAuthenticatedAjax");
-      if (req.isAuthenticated) {
+      if (req.isAuthenticated()) {
         return next();
       }
       return res.send(401);

@@ -1,21 +1,23 @@
 extends layout
 
 block content
-  .row.search-tools
-    .col-md-5.col-md-offset-1
-      .input-group
-        input#search-bar.form-control(type="text", placeholder="Search by School Name...")
-        span.input-group-btn
-          button#search-button.btn.bth-default(type="button")
-            span.glyphicon.glyphicon-search
+  .row
+    .col-md-10.col-md-offset-1
+      .row.search-tools
+        .col-md-5
+          .input-group
+            input#search-bar.form-control(type="text", placeholder="Search by School Name...")
+            span.input-group-btn
+              button#search-button.btn.bth-default(type="button")
+                span.glyphicon.glyphicon-search
 
-    .col-md-1.or-elem: p OR
+        .col-md-2.or-elem: p OR
 
-    .col-md-3
-      select.form-control#browse-state
-        option(value="0", selected="selected") - Browse by State -
+        .col-md-5
+          select.form-control#browse-state
+            option(value="0", selected="selected") - Browse by State -
 
-  .row#search-divider
+  //- .row#search-divider
 
   .row#query-menu
 
@@ -23,8 +25,9 @@ block content
 
   .row
     #search-results.col-md-8.col-md-offset-2
+    #pagination
 
-  .row#pagination
+
 
 block scripts
   script(src="/javascripts/findClient.js")

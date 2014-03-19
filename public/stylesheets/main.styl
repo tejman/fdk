@@ -1,62 +1,99 @@
 *, *:after, *:before
   box-sizing border-box
 
-body
-  padding 50px
+#body-content
+  padding 110px 50px 150px 50px
+  // padding-bottom 75px
+  background-color  rgb(241, 196, 15)
+  height auto
+
+.footer-divider
+  width 100%
+  height 12px
+  background url("../images/footer_pattern.png") repeat-x
+
+.footer-content
+  height 150px
+  background-color rgba(52, 73, 94, 1)
 
 .search-tools
-  margin-top 75px
+  margin 30px auto
+  background-color rgba(52, 73, 94, 1)
+  padding 65px 125px
+  border-radius 15px
+  border 2px solid rgb(22, 160, 133)
 
-#search-divider
-  width 90%
-  margin 50px auto 50px auto
-  height 5px
-  border-top 3px dashed #000
+
+// #search-divider
+//   width 90%
+//   margin 50px auto 50px auto
+//   height 5px
+//   border-top 3px dashed #000
 
 .or-elem
-  vertical-align center
+  vertical-align middle
   text-align center
   font-weight bold
   font-size 24px
+  color #FFF
+  p
+    height 42px
+    line-height 42px
 
 #query-menu
   text-align center
   margin-bottom 25px
+  vertical-align middle
 
 .result-item
-  background-color #eee
-  padding 10px
+  background-color rgb(26, 188, 156)
+  padding 20px
   border-radius 10px
   margin-top 15px
-  margin-bottom 15px
-  border 1px solid #999
+  margin-bottom 25px
+
 
 #filter-button
   width 20px
   margin 0px 20px
   opacity .5
   cursor pointer
+  font-size 20px
+  color rgb(52, 73, 94)
 
 #filter-button.active
   opacity 1
+  color rgb(52, 73, 94)
+
+.filter-actions, .switch
+  display inline-block
+
+#filter-switch
+  vertical-align middle
 
 #search-filters
   display none
+  margin-bottom 25px
 
 .filter-item
   text-align center
   vertical-align middle
 
+.slider-stat
+  margin-bottom 0px
+
 .ui-slider-handle
   top -1px
   height 16px
 
-.filter-label
+.filter-label-name
   font-size 12px
   text-transform uppercase
+  color rgba(52, 73, 94, 1)
 
+.filter-label
   .label-value
-    font-size 12px
+    font-size 14px
     margin auto 3px
     height auto
     line-height 1
@@ -64,20 +101,22 @@ body
     padding 3px 0px 3px 6px
     width auto
     opacity 1
-    background-color #FFF
-    color #34495e
+    background none
+    color rgba(52, 73, 94, 1)
 
   .form-control.flat:hover, .hovered
-    border-color #f1c40f
-    color #b59103
+    border-color rgb(192, 57, 43)
+    color rgb(192, 57, 43)
 
   .theto
     font-size 10px
+    color rgba(52, 73, 94, 1)
     text-transform uppercase
     line-height 10px
 
 .query-value
   margin auto 10px
+  color rgb(231, 76, 60)
 
 .filter-actions
   text-align center
@@ -91,17 +130,19 @@ body
   width auto
 
 #pagination
+  display inline-block
   text-align center
   position fixed
-  bottom -36px
-  right -86px
+  // bottom 100px
+  // right 0px
+  // margin-top 70px
+  // margin-bottom 25px
   transform rotate(-90deg)
-  transform-origin 0px 0px
+  transform-origin 150px 75px
   i, span, input
     transform rotate(90deg)
-    // transform-origin 0px 0px
     
-
+    
 .pager 
   line-height 1
   margin-bottom 0px
@@ -136,4 +177,47 @@ body
     color rgba(255, 255, 255, 1)
   
 
+.jumbotron
+  background-color rgb(26, 188, 156)
+  padding-top 70px
+  margin -57px -50px 30px -50px
 
+
+#stat-profile
+  margin-top 30px
+  // background-color rgba(72, 110, 147, .7)
+  // border 5px solid rgb(72, 110, 147)
+  border-radius 10px
+  padding 25px
+
+
+#fundraising
+  background-color rgba(250, 92, 92, .8)
+  border-radius 15px
+  padding 40px 40px
+  margin-top 30px
+  margin-bottom 50px
+
+  .btn
+    float right
+
+  .fundraising-stats
+    margin-bottom 20px
+
+  .fundraising.progress
+    margin-bottom 0
+    height 27px
+    background url("/images/burger_50_bw.png") repeat-x
+    .progress-bar
+      background url("/images/burger_100.png") repeat-x
+
+  .progress
+    background-color rgba(236, 240, 241, .7)
+    margin-top 3px
+    margin-bottom 0px
+    height 8px
+    .progress-bar
+      background-color rgb(255, 204, 0)
+
+.arc path:hover
+  stroke #FFF

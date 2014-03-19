@@ -5,36 +5,51 @@
   -moz-box-sizing: border-box;
   box-sizing: border-box;
 }
-body {
-  padding: 50px;
+#body-content {
+  padding: 110px 50px 150px 50px;
+  background-color: #f1c40f;
+  height: auto;
+}
+.footer-divider {
+  width: 100%;
+  height: 12px;
+  background: url("../images/footer_pattern.png") repeat-x;
+}
+.footer-content {
+  height: 150px;
+  background-color: #34495e;
 }
 .search-tools {
-  margin-top: 75px;
-}
-#search-divider {
-  width: 90%;
-  margin: 50px auto 50px auto;
-  height: 5px;
-  border-top: 3px dashed #000;
+  margin: 30px auto;
+  background-color: #34495e;
+  padding: 65px 125px;
+  -webkit-border-radius: 15px;
+  border-radius: 15px;
+  border: 2px solid #16a085;
 }
 .or-elem {
-  vertical-align: center;
+  vertical-align: middle;
   text-align: center;
   font-weight: bold;
   font-size: 24px;
+  color: #fff;
+}
+.or-elem p {
+  height: 42px;
+  line-height: 42px;
 }
 #query-menu {
   text-align: center;
   margin-bottom: 25px;
+  vertical-align: middle;
 }
 .result-item {
-  background-color: #eee;
-  padding: 10px;
+  background-color: #1abc9c;
+  padding: 20px;
   -webkit-border-radius: 10px;
   border-radius: 10px;
   margin-top: 15px;
-  margin-bottom: 15px;
-  border: 1px solid #999;
+  margin-bottom: 25px;
 }
 #filter-button {
   width: 20px;
@@ -43,29 +58,44 @@ body {
   -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=50)";
   filter: alpha(opacity=50);
   cursor: pointer;
+  font-size: 20px;
+  color: #34495e;
 }
 #filter-button.active {
   opacity: 1;
   -ms-filter: none;
   filter: none;
+  color: #34495e;
+}
+.filter-actions,
+.switch {
+  display: inline-block;
+}
+#filter-switch {
+  vertical-align: middle;
 }
 #search-filters {
   display: none;
+  margin-bottom: 25px;
 }
 .filter-item {
   text-align: center;
   vertical-align: middle;
 }
+.slider-stat {
+  margin-bottom: 0px;
+}
 .ui-slider-handle {
   top: -1px;
   height: 16px;
 }
-.filter-label {
+.filter-label-name {
   font-size: 12px;
   text-transform: uppercase;
+  color: #34495e;
 }
 .filter-label .label-value {
-  font-size: 12px;
+  font-size: 14px;
   margin: auto 3px;
   height: auto;
   line-height: 1;
@@ -75,21 +105,23 @@ body {
   opacity: 1;
   -ms-filter: none;
   filter: none;
-  background-color: #fff;
+  background: none;
   color: #34495e;
 }
 .filter-label .form-control.flat:hover,
 .filter-label .hovered {
-  border-color: #f1c40f;
-  color: #b59103;
+  border-color: #c0392b;
+  color: #c0392b;
 }
 .filter-label .theto {
   font-size: 10px;
+  color: #34495e;
   text-transform: uppercase;
   line-height: 10px;
 }
 .query-value {
   margin: auto 10px;
+  color: #e74c3c;
 }
 .filter-actions {
   text-align: center;
@@ -104,20 +136,19 @@ body {
   width: auto;
 }
 #pagination {
+  display: inline-block;
   text-align: center;
   position: fixed;
-  bottom: -36px;
-  right: -86px;
   -webkit-transform: rotate(-90deg);
   -moz-transform: rotate(-90deg);
   -o-transform: rotate(-90deg);
   -ms-transform: rotate(-90deg);
   transform: rotate(-90deg);
-  -webkit-transform-origin: 0px 0px;
-  -moz-transform-origin: 0px 0px;
-  -o-transform-origin: 0px 0px;
-  -ms-transform-origin: 0px 0px;
-  transform-origin: 0px 0px;
+  -webkit-transform-origin: 150px 75px;
+  -moz-transform-origin: 150px 75px;
+  -o-transform-origin: 150px 75px;
+  -ms-transform-origin: 150px 75px;
+  transform-origin: 150px 75px;
 }
 #pagination i,
 #pagination span,
@@ -168,4 +199,49 @@ body {
 .pager:hover div,
 .pager:hover a {
   color: #fff;
+}
+.jumbotron {
+  background-color: #1abc9c;
+  padding-top: 70px;
+  margin: -57px -50px 30px -50px;
+}
+#stat-profile {
+  margin-top: 30px;
+  -webkit-border-radius: 10px;
+  border-radius: 10px;
+  padding: 25px;
+}
+#fundraising {
+  background-color: rgba(250,92,92,0.8);
+  -webkit-border-radius: 15px;
+  border-radius: 15px;
+  padding: 40px 40px;
+  margin-top: 30px;
+  margin-bottom: 50px;
+}
+#fundraising .btn {
+  float: right;
+}
+#fundraising .fundraising-stats {
+  margin-bottom: 20px;
+}
+#fundraising .fundraising.progress {
+  margin-bottom: 0;
+  height: 27px;
+  background: url("/images/burger_50_bw.png") repeat-x;
+}
+#fundraising .fundraising.progress .progress-bar {
+  background: url("/images/burger_100.png") repeat-x;
+}
+#fundraising .progress {
+  background-color: rgba(236,240,241,0.7);
+  margin-top: 3px;
+  margin-bottom: 0px;
+  height: 8px;
+}
+#fundraising .progress .progress-bar {
+  background-color: #fc0;
+}
+.arc path:hover {
+  stroke: #fff;
 }
