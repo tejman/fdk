@@ -12,6 +12,7 @@ var mongoose = require("mongoose");
 var passport = require('passport');
 var passportConfig = require('./config/passport');
 var stripe = require('stripe');
+var aws = require('aws-sdk');
 
 
 var frontControl = require("./controls/frontControl.js");
@@ -32,6 +33,7 @@ var compile = function(str, path){
     .use(nib())
     .import("nib");
 }
+
 
 app.set('port', process.env.PORT || 3000);
 app.set('views', path.join(__dirname, 'views'));
@@ -54,7 +56,13 @@ app.use(stylus.middleware({
   compile: compile
 }))
 app.use(express.static(path.join(__dirname, 'public')));
-mongoose.connect("mongodb://localhost/feedkids");
+
+if (global.process.env.MONGOHQ_URL) {
+  mongoose.connect(global.process.env.MONGOHQ_URL);
+} else {
+  mongoose.connect('mongodb://localhost/feedkids');
+}
+
 
 // development only
 if ('development' == app.get('env')) {
