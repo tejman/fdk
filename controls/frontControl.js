@@ -9,7 +9,7 @@
   module.exports = {
     index: function(req, res) {
       return res.render("index", {
-        title: "Feed Dem Kids"
+        title: "T4T"
       });
     },
     profile: function(req, res) {

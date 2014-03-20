@@ -5,7 +5,7 @@ financeDataModel = require "../models/financeModel.js"
 module.exports = {
 
   index: (req, res)->
-    res.render "index", {title: "Feed Dem Kids"}
+    res.render "index", {title: "T4T"}
 
   ,profile: (req, res) ->
     schoolDataModel.findById req.params.id, (err, doc)->
