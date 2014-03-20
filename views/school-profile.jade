@@ -10,7 +10,7 @@ block content
       .container
         .row
           .col-md-5
-            img(src="http://placehold.it/300x200")
+            img(src="/images/stock-school.png")
           .col-md-7
             ul.list-group
               li.list-group-item
@@ -34,7 +34,7 @@ block content
         .col-md-8
           p We need lunch money!
         .col-md-4
-          a.btn.btn-primary(href="#") Feed!
+          a.btn.btn-primary.btn-lg(href="#") Feed!
       .row.fundraising-stats
         table.table-hover.table-condensed.col-md-4.col-md-offset-2
           tr
@@ -59,16 +59,9 @@ block content
 
 block scripts
   script.
-    //- var dataObj = {school: school, finance: finance}
     var bootData = !{JSON.stringify({school: school, finance: finance})}
   script(src="/javascripts/schoolClient.js")
 
-
-
-//- Ethnic Diversity
-//- Income & Unemployment
-//- Poverty
-//- Public Assistance
 
 
 

@@ -87,9 +87,12 @@ $ ->
         step: 10,
         stop: (e, ui)->
           filterItem = $(this).closest(".filter-item")
+
           setTimeout(()-> 
+            if filterItem.find(".ui-state-focus")
+              filterItem.find(".ui-state-focus").trigger("blur")
             filterItem.find(".label-value").removeClass("hovered")
-          ,500)
+          ,0)
           filterResults(searchResults, getFilterValues())
 
         ,slide: (e, ui)->
@@ -263,8 +266,9 @@ $ ->
     url: "/popStateDropdown",
     success: (data)->
       for obj in data
-        newElem = _.template("<option value='<%= stateAbbr %>'><%= stateFull %></option>")
-        $("#browse-state").append(newElem(obj))
+        obj.stateAbbr.replace(" ", "")
+        newElem = _.template("<li><a value='<%= stateAbbr %>'><%= stateFull %></a></li>")
+        $("#browse-state .dropdown-menu").append(newElem(obj))
   }
 
 
@@ -292,6 +296,7 @@ $ ->
   $(document).on "click", "#filter-button", ()->
     $(this).toggleClass("active")
     filterBarToggle()
+
 
 
   $(document).on "change", "#filter-switch .switch", (e)->

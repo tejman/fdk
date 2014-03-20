@@ -2,24 +2,33 @@ for school in schools
 
   .result-item.container.col-md-12(data-id=school._id)
     .row
-      .col-md-3.school-search-pic
-        img(src="http://placehold.it/225x150")
+      .col-md-4.school-search-pic.vcenter
+        img(src="/images/stock-school.png")
 
-      .col-md-6.school-search-prof
+      .col-md-8.school-search-prof.vcenter
         ul.list-group
           li.list-group-item
             span.badge School
-            | #{school.name}
+            | #{school.name.toLowerCase()}
           li.list-group-item
             span.badge District
-            | #{school.agencyName}
+            | #{school.agencyName.toLowerCase()}
           li.list-group-item
             span.badge State
-            | #{school.stateFull}
+            | #{school.stateFull.toLowerCase()}
           li.list-group-item
             span.badge $ Needed
-            | Current Balance
+            if school.balance
+              | #{school.balance.toLowerCase()}
+            else
+              | Current Balance
 
-      .col-md-2.col-md-offset-1.funding-status
-        .empty-img empty img
-        .fill-img fill img
+    .row.search-funding
+      .col-md-8.funding-status.vcenter
+        .fundraising.progress
+          .progress-bar(style="width: 40%")
+        .progress
+          .progress-bar(style="width: 40%")
+      .col-md-2.vcenter.funding-label
+          p.percentRaised 90
+          p.percentRaisedLabel  % &nbsp; &nbsp; Raised

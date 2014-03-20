@@ -1,0 +1,82 @@
+extends layout
+
+
+block content
+
+  .panel-group#accordian
+    .panel.panel-default
+      .panel-heading
+        h4.panel-title
+          a(href="#collapseOne", data-toggle="collapse", data-parent="#accordian")
+            | Contact Information
+    #collapseOne.panel-collapse.collapse.in
+      .panel-body
+        form.form-horizontal(role="form", name="userContact")
+          .form-group
+            label.col-sm-2.control-label(for="contactName") Name of School Administrator
+            .col-sm-10
+              input#contactName.form-control(type="text", placeholder=" [ Dr. John Doe ] ")
+          .form-group
+            label.col-sm-2.control-label(for="contactPhone") Primary Phone #
+            .col-sm-10
+              input#contactPhone.form-control(type="text", placeholder=" [ 123-456-7890 ] ")
+          .form-group
+            label.col-sm-2.control-label(for="contactEmail") Contact Email
+            .col-sm-10
+              input#contactEmail.form-control(type="text", placeholder=" [ johndoe@myschool.edu ] ")
+          .form-group
+            label.col-sm-2.control-label(for="mailAddress") Mailing Address
+            .col-sm-10
+              input#mailAddress.form-control(type="text", placeholder=" [ 123 Fourth Street ] ")
+          .form-group
+            label.col-sm-2.control-label(for="mailCity") City
+            .col-sm-10
+              input#mailCity.form-control(type="text", placeholder=" [ Metropolis ] ")
+          .form-group
+            label.col-sm-2.control-label(for="mailZip") Zip Code
+            .col-sm-10
+              input#mailZip.form-control(type="text", placeholder=" [ 12345 ] ")
+
+    .panel.panel-default
+      .panel-heading
+        h4.panel-title
+          a(href="#collapseTwo", data-toggle="collapse", data-parent="#accordian")
+            | Accounts
+    #collapseTwo.panel-collapse.collapse.in
+      .panel-body
+        form.form-horizontal(role="form", name="userAccounts")
+          .form-group
+            label.col-sm-2.control-label(for="bankName") Complete Bank Name
+            .col-sm-10
+              input#bankName.form-control(type="text", placeholder=" [ Bank of America ] ")
+          .form-group 
+            label.col-sm-2.control-label(for="bankRouting") Routing Number
+            .col-sm-10
+              input#bankRouting.form-control(type="text", placeholder=" [ 123456789 ] ")
+          .form-group
+            label.col-sm-2.control-label(for="bankState") State
+            .col-sm-1090p")
+          .form-group
+            label.col-sm-2.control-label(for="bankAcct") Account Number
+            .col-sm-10
+              input#bankAcct.form-control(type="text", placeholder=" [ 111111 ] ")
+          .form-group
+            label.col-sm-2.control-label(for="bankAcctContact") Name of Account Contact
+            .col-sm-10
+              input#bankAcctContact.form-control(type="text", placeholder=" [ Jane Doe ] ")"
+
+    .panel.panel-default
+      .panel-heading
+        h4.panel-title
+          a(href="#collapseTwo", data-toggle="collapse", data-parent="#accordian")
+            | Upload Lunch Account Data
+    #collapseTwo.panel-collapse.collapse.in
+      .panel-body
+        form.form-horizontal(role="form", name="accountCSV")
+          .form-group
+            label.col-sm-2.control-label(for="accountsCSV") Upload Lunch Account Data as CSV
+            .col-sm-10
+              input#accountsCSV.form-control(type="file", accept=".csv")
+
+
+

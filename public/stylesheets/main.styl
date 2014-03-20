@@ -1,14 +1,49 @@
 *, *:after, *:before
   box-sizing border-box
 
+.col-md-2
+  line-height 45px
+
 #body-content
   padding 110px 50px 150px 50px
   // padding-bottom 75px
   background-color  #FFF
   height auto
+  color #245259
+
+.navbar
+  background-color rgba(235, 69, 73, .9)
+  .nav-pills
+    vertical-align middle
+  .fui-mail
+    max-height 32px
+    font-size 26px
+    line-height 1.5
+  .navbar-brand
+    height 100%
+    font-size 30px
+
+.forelem
+  font-size 14px
+  margin auto 5px
 
 .nav>li>a
-  height 53px
+  padding-top 5px
+  height 100%
+  color #E1F1EC
+  line-height 1.5
+  font-size 20px
+
+.nav>li>a:hover, .nav>li:hover
+  // background-color #E1F1EC
+  // opacity 1
+  // box-shadow   inset 0px 0px 5px 3px rgba(79, 128, 135, .75)
+  border-radius 0px
+  background-color #E1F1EC
+  color rgba(235, 69, 73, .8)
+
+.navbar-default .navbar-brand:hover, .navbar-default .navbar-brand:focus
+  color #E1F1EC
 
 .footer-divider
   width 100%
@@ -16,30 +51,52 @@
   background url("../images/footer_pattern.png") repeat-x
 
 .footer-content
-  height 150px
-  background-color rgba(52, 73, 94, 1)
+  height 100%
+  background-color rgba(235, 69, 73, .9)
+  padding 10px
 
 .search-tools
   margin 30px auto
-  background-color rgba(52, 73, 94, 1)
+  background-color #245259 
   padding 65px 125px
   border-radius 15px
-  border 2px solid rgb(22, 160, 133)
+  // border 3px solid #E1F1EC 
+  box-shadow  5px 5px 3px 0px rgba(235, 69, 73, .4)
 
+.dropdown-toggle
+  color #FFF
+  background-color rgba(235, 69, 73, .4)
+  margin-bottom -15px
+  width 90%
+  .caret
+    margin-left 20px
+    // float right
 
-// #search-divider
-//   width 90%
-//   margin 50px auto 50px auto
-//   height 5px
-//   border-top 3px dashed #000
+.open >
+  .dropdown-menu
+    margin-top 3px
+    left auto
+    width 85%
+    text-align center
+  .dropdown-arrow
+    display none
+
+.input-group.focus .input-group-btn .btn
+  background-color #FFF
+  border-color rgb(235, 69, 73)
+  color rgb(235, 69, 73)
+
+.form-control:focus
+  border-color rgb(235, 69, 73)
+
 
 .or-elem
   vertical-align middle
   text-align center
   font-weight bold
-  font-size 24px
-  color #FFF
   p
+    font-size 28px
+    color #E1F1EC
     height 42px
     line-height 42px
 
@@ -49,12 +106,60 @@
   vertical-align middle
 
 .result-item
-  background-color rgba(26, 188, 156, .7)
-  padding 20px
+  cursor pointer
+  background-color #E1F1EC
+  padding 20px 25px
   border-radius 10px
-  margin-top 15px
-  margin-bottom 25px
+  margin-top 40px
+  margin-bottom 40px
+  box-shadow 0px 0px 18px 2px rgba(127, 140, 141, .75)
+  .row
+    text-align center
+  .badge
+    background-color rgba(235, 69, 73, .7)
+    color #FFF
 
+  .list-group-item:first-letter
+    text-transform uppercase
+  .list-group-item
+    color #245259
+    text-transform capitalize
+    text-align left
+  .list-group-item:first-child
+    font-size 22px
+    font-weight bold
+
+.percentRaised
+  margin-top -24px
+  font-size 60px
+  line-height auto
+  font-weight bold
+  display inline-block
+  margin auto auto
+  
+.percentRaisedLabel
+  padding 5px
+  font-style italics
+  font-size 17px
+  display inline-block
+  margin auto 5px
+
+.funding-label
+  text-align left
+
+.funding-status
+  margin-left 4%
+
+.school-search-pic img
+  border 4px solid #9dccbc
+  width 90%
+  margin-bottom 10px
+  border-radius 10px
+
+.vcenter
+  display inline-block
+  vertical-align middle
+  float none
 
 #filter-button
   width 20px
@@ -62,17 +167,29 @@
   opacity .5
   cursor pointer
   font-size 20px
-  color rgb(52, 73, 94)
+  color #245259
+  transition .6s
 
 #filter-button.active
   opacity 1
-  color rgb(52, 73, 94)
+  color #245259
+
+#filter-button:hover
+  transform scale(1.7,1.7)
+  color #245259
 
 .filter-actions, .switch
   display inline-block
 
 #filter-switch
   vertical-align middle
+
+.has-switch span.switch-left
+  background-color #245259
+  color #9DCCBC
+
+.has-switch > div.switch-on label
+  background-color #9DCCBC
 
 #search-filters
   display none
@@ -87,12 +204,24 @@
 
 .ui-slider-handle
   top -1px
-  height 16px
+  height 18px
+
+.ui-slider-handle
+  background-color rgba(235, 69, 73, 1)
+
+.ui-slider-range
+  background-color rgba(235, 69, 73, .7)
+
+.ui-slider-handle:hover
+  background-color #FFE619
+
+.ui-slider-handle:focus
+  background-color #FFE619
 
 .filter-label-name
   font-size 12px
   text-transform uppercase
-  color rgba(52, 73, 94, 1)
+  color #245259
 
 .filter-label
   .label-value
@@ -105,21 +234,25 @@
     width auto
     opacity 1
     background none
-    color rgba(52, 73, 94, 1)
+    color #245259
 
   .form-control.flat:hover, .hovered
-    border-color rgb(192, 57, 43)
-    color rgb(192, 57, 43)
+    border-color #FFE619
+    background-color #FFE619
+    color #245259
 
   .theto
     font-size 10px
-    color rgba(52, 73, 94, 1)
+    color #245259
     text-transform uppercase
     line-height 10px
 
 .query-value
   margin auto 10px
   color rgb(231, 76, 60)
+
+#query-menu
+  margin-top 20px
 
 .filter-actions
   text-align center
@@ -200,27 +333,60 @@
   padding 40px 40px
   margin-top 30px
   margin-bottom 50px
-
   .btn
     float right
 
-  .fundraising-stats
-    margin-bottom 20px
+.progress
+  background-color #9eafaf
+  margin-top 3px
+  margin-bottom 0px
+  height 8px
+  .progress-bar
+    background-color #399000
 
-  .fundraising.progress
-    margin-bottom 0
-    height 27px
-    background url("/images/burger_50_bw.png") repeat-x
-    .progress-bar
-      background url("/images/burger_100.png") repeat-x
+.fundraising-stats
+  margin-bottom 20px
 
-  .progress
-    background-color rgba(236, 240, 241, .7)
-    margin-top 3px
-    margin-bottom 0px
-    height 8px
-    .progress-bar
-      background-color rgb(255, 204, 0)
+.search-funding
+  height auto
+  margin-top 10px
+  vertical-align middle
+  overflow visible
+
+.fundraising
+  margin-bottom 0
+  height 27px
+  background url("/images/burger_50_bw.png") repeat-x
+.fundraising>.progress-bar
+    background url("/images/burger_100.png") repeat-x
 
 .arc path:hover
   stroke #FFF
+
+#contact-form 
+  .btn 
+    float left
+  .form-control:hover
+    border-color #245259
+  .form-control
+    display block
+    width 90%
+  .form-group
+    text-align center
+
+  .form-top
+    margin 10px auto
+
+  .form-bottom
+    margin 10px auto
+    textarea.form-control
+      width 97%
+      height 85px
+      text-align left
+
+
+
+
+
+
+  

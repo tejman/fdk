@@ -29,6 +29,9 @@
           });
         }
       });
+    },
+    update: function(req, res) {
+      return res.send(req.body.formData);
     }
   };
 

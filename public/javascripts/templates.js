@@ -226,7 +226,16 @@ var interp;
 
 buf.push('<div');
 buf.push(attrs({ 'data-id':(school._id), "class": ('result-item') + ' ' + ('container') + ' ' + ('col-md-12') }, {"data-id":true}));
-buf.push('><div class="row"><div class="col-md-3 school-search-pic"><img src="http://placehold.it/225x150"/></div><div class="col-md-6 school-search-prof"><ul class="list-group"><li class="list-group-item"><span class="badge">School</span>' + escape((interp = school.name) == null ? '' : interp) + '</li><li class="list-group-item"><span class="badge">District</span>' + escape((interp = school.agencyName) == null ? '' : interp) + '</li><li class="list-group-item"><span class="badge">State</span>' + escape((interp = school.stateFull) == null ? '' : interp) + '</li><li class="list-group-item"><span class="badge">$ Needed</span>Current Balance</li></ul></div><div class="col-md-2 col-md-offset-1 funding-status"><div class="empty-img">empty img</div><div class="fill-img">fill img</div></div></div></div>');
+buf.push('><div class="row"><div class="col-md-4 school-search-pic vcenter"><img src="/images/stock-school.png"/></div><div class="col-md-8 school-search-prof vcenter"><ul class="list-group"><li class="list-group-item"><span class="badge">School</span>' + escape((interp = school.name.toLowerCase()) == null ? '' : interp) + '</li><li class="list-group-item"><span class="badge">District</span>' + escape((interp = school.agencyName.toLowerCase()) == null ? '' : interp) + '</li><li class="list-group-item"><span class="badge">State</span>' + escape((interp = school.stateFull.toLowerCase()) == null ? '' : interp) + '</li><li class="list-group-item"><span class="badge">$ Needed</span>');
+if ( school.balance)
+{
+buf.push('' + escape((interp = school.balance.toLowerCase()) == null ? '' : interp) + '');
+}
+else
+{
+buf.push('Current Balance');
+}
+buf.push('</li></ul></div></div><div class="row search-funding"><div class="col-md-8 col-md-offset-1 funding-status vcenter"><div class="fundraising progress"><div style="width: 40%" class="progress-bar"></div></div><div class="progress"><div style="width: 40%" class="progress-bar"></div></div></div><div class="col-md-2 vcenter funding-label"><p class="percentRaised">90</p><p class="percentRaisedLabel"> %  Raised</p></div></div></div>');
     }
   } else {
     for (var $index in schools) {
@@ -234,7 +243,16 @@ buf.push('><div class="row"><div class="col-md-3 school-search-pic"><img src="ht
 
 buf.push('<div');
 buf.push(attrs({ 'data-id':(school._id), "class": ('result-item') + ' ' + ('container') + ' ' + ('col-md-12') }, {"data-id":true}));
-buf.push('><div class="row"><div class="col-md-3 school-search-pic"><img src="http://placehold.it/225x150"/></div><div class="col-md-6 school-search-prof"><ul class="list-group"><li class="list-group-item"><span class="badge">School</span>' + escape((interp = school.name) == null ? '' : interp) + '</li><li class="list-group-item"><span class="badge">District</span>' + escape((interp = school.agencyName) == null ? '' : interp) + '</li><li class="list-group-item"><span class="badge">State</span>' + escape((interp = school.stateFull) == null ? '' : interp) + '</li><li class="list-group-item"><span class="badge">$ Needed</span>Current Balance</li></ul></div><div class="col-md-2 col-md-offset-1 funding-status"><div class="empty-img">empty img</div><div class="fill-img">fill img</div></div></div></div>');
+buf.push('><div class="row"><div class="col-md-4 school-search-pic vcenter"><img src="/images/stock-school.png"/></div><div class="col-md-8 school-search-prof vcenter"><ul class="list-group"><li class="list-group-item"><span class="badge">School</span>' + escape((interp = school.name.toLowerCase()) == null ? '' : interp) + '</li><li class="list-group-item"><span class="badge">District</span>' + escape((interp = school.agencyName.toLowerCase()) == null ? '' : interp) + '</li><li class="list-group-item"><span class="badge">State</span>' + escape((interp = school.stateFull.toLowerCase()) == null ? '' : interp) + '</li><li class="list-group-item"><span class="badge">$ Needed</span>');
+if ( school.balance)
+{
+buf.push('' + escape((interp = school.balance.toLowerCase()) == null ? '' : interp) + '');
+}
+else
+{
+buf.push('Current Balance');
+}
+buf.push('</li></ul></div></div><div class="row search-funding"><div class="col-md-8 col-md-offset-1 funding-status vcenter"><div class="fundraising progress"><div style="width: 40%" class="progress-bar"></div></div><div class="progress"><div style="width: 40%" class="progress-bar"></div></div></div><div class="col-md-2 vcenter funding-label"><p class="percentRaised">90</p><p class="percentRaisedLabel"> %  Raised</p></div></div></div>');
    }
   }
 }).call(this);

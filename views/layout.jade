@@ -8,29 +8,56 @@ html
     link(rel='stylesheet', href='/stylesheets/main.css')
 
   body
-    .navbar.navbar-inverse.navbar-fixed-top
-      .container
+    .navbar.navbar-default.navbar-fixed-top(role="navigation")
         .navbar-header
-          button.navbar-toggle(type="button", data-toggle="collapse", data-target="#navbar-collapse-main")
+          button.navbar-toggle(type="button", data-toggle="collapse", datatarget="#navbar-collapse-main")
             span.sr-only Toggle Nav
-            span.icon-bar
-            span.icon-bar
-            span.icon-bar
-          span.navbar-brand Feed Dem Kids
-
+          a.navbar-brand(href="#")
+            | tots
+            span.forelem.vcenter for
+            | tots
         .collapse.navbar-collapse#navbar-collapse-main
           ul.nav.nav-pills.nav-justified
-            li: a(href="/") Home
-            li: a(href="/find") Find A School
-            //- li: a(href="#") Maps
-            li: a(href="/about") About
+            li: a(href="/") home
+            li: a(href="/find") find a school
+            li: a(href="/about") about
+            li: a(href="/emailForm")
+              span.fui-mail
 
     #body-content
         block content
 
     #footer
         .footer-divider
-        .footer-content FOOTER
+        .footer-content
+          .row
+            .col-md-2
+              &nbsp;
+            #contact-form.col-md-8
+              form.form-inline(action="/contactForm/submit", role="form")
+                .row.form-top
+                  .form-group.col-md-3
+                    label.sr-only(for="emailName")
+                    input.form-control#emailName(type="text", name="name", placeholder="Your Name")
+                  
+                  .form-group.col-md-3
+                    label.sr-only(for="emailFrom")
+                    input.form-control#emailFrom(type="text", name="from", placeholder="Your E-Mail")
+
+                  .form-group.col-md-3
+                    label.sr-only(for="emailSubject") 
+                    input.form-control#emailSubject(type="text", name="subject", placeholder="Subject")
+
+                .row.form-bottom
+                  .form-group.col-md-9
+                    label.sr-only(for="emailText")
+                    textarea.form-control#emailText(type="text", name="text", placeholder="What do you want to tell us?")
+                  
+                  .form-group.col-md-2
+                    input.btn.btn-success.btn-lg(type="submit")
+
+
+
 
     script(src="/javascripts/jquery-2.0.3.min.js")
     script(src="http://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.6.0/underscore-min.js")

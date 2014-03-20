@@ -97,8 +97,11 @@
             var filterItem;
             filterItem = $(this).closest(".filter-item");
             setTimeout(function() {
+              if (filterItem.find(".ui-state-focus")) {
+                filterItem.find(".ui-state-focus").trigger("blur");
+              }
               return filterItem.find(".label-value").removeClass("hovered");
-            }, 500);
+            }, 0);
             return filterResults(searchResults, getFilterValues());
           },
           slide: function(e, ui) {
@@ -300,8 +303,9 @@
         _results = [];
         for (_i = 0, _len = data.length; _i < _len; _i++) {
           obj = data[_i];
-          newElem = _.template("<option value='<%= stateAbbr %>'><%= stateFull %></option>");
-          _results.push($("#browse-state").append(newElem(obj)));
+          obj.stateAbbr.replace(" ", "");
+          newElem = _.template("<li><a value='<%= stateAbbr %>'><%= stateFull %></a></li>");
+          _results.push($("#browse-state .dropdown-menu").append(newElem(obj)));
         }
         return _results;
       }

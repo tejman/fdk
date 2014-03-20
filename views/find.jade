@@ -13,9 +13,12 @@ block content
 
         .col-md-2.or-elem: p OR
 
-        .col-md-5
-          select.form-control.selectpicker#browse-state
-            option(value="0", selected="selected") - Browse by State -
+        
+        .col-md-5.dropdown#browse-state
+          button.btn.btn-default.dropdown-toggle(data-toggle="dropdown") - BROWSE BY STATE -
+            span.caret
+          span.dropdown-arrow
+          ul.dropdown-menu
 
   //- .row#search-divider
 
@@ -31,3 +34,5 @@ block content
 
 block scripts
   script(src="/javascripts/findClient.js")
+
+
