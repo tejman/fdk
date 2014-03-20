@@ -12,9 +12,9 @@ passport.deserializeUser (id, done)->
 
 
 googleAuth = {
-  clientID: '128597600721.apps.googleusercontent.com',
-  clientSecret: '3jGnAsClnvAFdzVXP8Fx-pvq',
-  callbackURL: 'http://localhost:3000/auth/google/callback'
+  clientID: global.process.env.GOOGLE_CLIENT_ID,
+  clientSecret: global.process.env.GOOGLE_CLIENT_SECRET,
+  callbackURL: global.process.env.GOOGLE_CALLBACK_URL
 }
 
 googleStrategy = new GoogleStrategy googleAuth, (accessToken, refreshToken, profile, done)->

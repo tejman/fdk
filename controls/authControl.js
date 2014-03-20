@@ -15,7 +15,7 @@
     },
     logout: function(req, res) {
       console.log("logout");
-      res.logout();
+      req.logout();
       return res.redirect("/login");
     },
     ensureAuthenticated: function(req, res, next) {

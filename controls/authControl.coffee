@@ -14,7 +14,7 @@ module.exports = {
 
   ,logout: (req,res)->
     console.log "logout"
-    res.logout()
+    req.logout()
     res.redirect "/login"
 
   ,ensureAuthenticated: (req,res, next)->

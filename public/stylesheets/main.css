@@ -7,8 +7,11 @@
 }
 #body-content {
   padding: 110px 50px 150px 50px;
-  background-color: #f1c40f;
+  background-color: #fff;
   height: auto;
+}
+.nav>li>a {
+  height: 53px;
 }
 .footer-divider {
   width: 100%;
@@ -44,7 +47,7 @@
   vertical-align: middle;
 }
 .result-item {
-  background-color: #1abc9c;
+  background-color: rgba(26,188,156,0.7);
   padding: 20px;
   -webkit-border-radius: 10px;
   border-radius: 10px;
