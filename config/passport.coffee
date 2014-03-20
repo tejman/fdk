@@ -17,6 +17,8 @@ googleAuth = {
   callbackURL: global.process.env.GOOGLE_CALLBACK_URL
 }
 
+console.log googleAuth
+
 googleStrategy = new GoogleStrategy googleAuth, (accessToken, refreshToken, profile, done)->
   console.log accessToken, refreshToken, profile
 

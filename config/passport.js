@@ -24,6 +24,8 @@
     callbackURL: global.process.env.GOOGLE_CALLBACK_URL
   };
 
+  console.log(googleAuth);
+
   googleStrategy = new GoogleStrategy(googleAuth, function(accessToken, refreshToken, profile, done) {
     console.log(accessToken, refreshToken, profile);
     return process.nextTick(function() {
