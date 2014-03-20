@@ -21,8 +21,9 @@ html
             li: a(href="/") home
             li: a(href="/find") find a school
             li: a(href="/about") about
-            li: a(href="/emailForm")
-              span.fui-mail
+            li: a.btn.btn-danger(href="auth/google")
+              i.fa.fa-google-plus
+              | Sign In
 
     #body-content
         block content
