@@ -235,7 +235,7 @@ else
 {
 buf.push('Current Balance');
 }
-buf.push('</li></ul></div></div><div class="row search-funding"><div class="col-md-8 col-md-offset-1 funding-status vcenter"><div class="fundraising progress"><div style="width: 40%" class="progress-bar"></div></div><div class="progress"><div style="width: 40%" class="progress-bar"></div></div></div><div class="col-md-2 vcenter funding-label"><p class="percentRaised">90</p><p class="percentRaisedLabel"> %  Raised</p></div></div></div>');
+buf.push('</li></ul></div></div><div class="row search-funding"><div class="col-md-8 funding-status vcenter"><div class="fundraising progress"><div style="width: 40%" class="progress-bar"></div></div><div class="progress"><div style="width: 40%" class="progress-bar"></div></div></div><div class="col-md-2 vcenter funding-label"><p class="percentRaised">90</p><p class="percentRaisedLabel"> % &nbsp; &nbsp; Raised</p></div></div></div>');
     }
   } else {
     for (var $index in schools) {
@@ -252,7 +252,7 @@ else
 {
 buf.push('Current Balance');
 }
-buf.push('</li></ul></div></div><div class="row search-funding"><div class="col-md-8 col-md-offset-1 funding-status vcenter"><div class="fundraising progress"><div style="width: 40%" class="progress-bar"></div></div><div class="progress"><div style="width: 40%" class="progress-bar"></div></div></div><div class="col-md-2 vcenter funding-label"><p class="percentRaised">90</p><p class="percentRaisedLabel"> %  Raised</p></div></div></div>');
+buf.push('</li></ul></div></div><div class="row search-funding"><div class="col-md-8 funding-status vcenter"><div class="fundraising progress"><div style="width: 40%" class="progress-bar"></div></div><div class="progress"><div style="width: 40%" class="progress-bar"></div></div></div><div class="col-md-2 vcenter funding-label"><p class="percentRaised">90</p><p class="percentRaisedLabel"> % &nbsp; &nbsp; Raised</p></div></div></div>');
    }
   }
 }).call(this);
