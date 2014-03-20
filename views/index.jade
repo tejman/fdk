@@ -1,5 +1,19 @@
 extends layout
 
 block content
-  h1= title
-  p Welcome to #{title}
+  h1.splash
+    | tots
+    span.forelem.vcenter for
+    | tots
+
+  p.lead.splash-desc 
+    | T4T is a simple platform allowing our public schools to find crowdsourced funding
+    br 
+    br
+    | Our mission for now:
+    br
+    strong MAKE SURE EVERY SCHOOL CHILD GETS A HOT LUNCH
+
+
+block scripts
+  script(src="/javascripts/splashClient.js")

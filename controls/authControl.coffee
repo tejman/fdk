@@ -15,13 +15,13 @@ module.exports = {
   ,logout: (req,res)->
     console.log "logout"
     req.logout()
-    res.redirect "/login"
+    res.redirect "/"
 
   ,ensureAuthenticated: (req,res, next)->
     console.log "ensureAuthenticated"
     if req.isAuthenticated()
       return next()
-    res.redirect "/login"
+    res.redirect "/"
 
   ,ensureAuthenticatedAjax: (req,res, next)->
     console.log "ensureAuthenticatedAjax"

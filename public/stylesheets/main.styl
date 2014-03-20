@@ -7,9 +7,33 @@
 #body-content
   padding 110px 50px 150px 50px
   // padding-bottom 75px
-  background-color  #FFF
-  height auto
+  background-color  #E1F1EC
+  // height 1200px
   color #245259
+
+.splash
+  text-align center
+  margin auto
+  padding 150px
+  font-size 125px
+  font-weight bold
+  .forelem
+    color #EC5659
+    font-size 40px
+    margin auto 25px
+    font-style italic
+
+.splash-desc
+  text-align center
+  font-style italic
+  margin auto
+  font-size 36px
+
+.tile
+  height auto
+  width 300px
+  // margin-left 25px
+  background rgba(36, 82, 89, .4)
 
 .navbar
   background-color rgba(235, 69, 73, .9)
@@ -22,11 +46,15 @@
   .navbar-brand
     height 100%
     font-size 30px
+  i.fa
+    padding 0 5px
 
 .forelem
   font-size 14px
   margin auto 5px
 
+.nav>li
+  padding-top 5px
 .nav>li>a
   padding-top 5px
   height 100%
@@ -51,9 +79,10 @@
   background url("../images/footer_pattern.png") repeat-x
 
 .footer-content
-  height 100%
+  height auto
   background-color rgba(235, 69, 73, .9)
   padding 10px
+  padding-bottom 20px
 
 .search-tools
   margin 30px auto
@@ -314,9 +343,13 @@
   
 
 .jumbotron
-  background-color rgb(26, 188, 156)
+  background-color #245259
   padding-top 70px
   margin -57px -50px 30px -50px
+  .result-item
+    border none
+    box-shadow none
+    margin auto
 
 
 #stat-profile
@@ -333,8 +366,13 @@
   padding 40px 40px
   margin-top 30px
   margin-bottom 50px
+  .pager
+    .pages input
+      width 70px
+      height 35px
   .btn
-    float right
+    display inline-block
+    margin-top -16px
 
 .progress
   background-color #9eafaf
@@ -345,7 +383,7 @@
     background-color #399000
 
 .fundraising-stats
-  margin-bottom 20px
+  margin 20px auto
 
 .search-funding
   height auto
@@ -376,6 +414,7 @@
 
   .form-top
     margin 10px auto
+    margin-top 55px
 
   .form-bottom
     margin 10px auto

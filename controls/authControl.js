@@ -16,14 +16,14 @@
     logout: function(req, res) {
       console.log("logout");
       req.logout();
-      return res.redirect("/login");
+      return res.redirect("/");
     },
     ensureAuthenticated: function(req, res, next) {
       console.log("ensureAuthenticated");
       if (req.isAuthenticated()) {
         return next();
       }
-      return res.redirect("/login");
+      return res.redirect("/");
     },
     ensureAuthenticatedAjax: function(req, res, next) {
       console.log("ensureAuthenticatedAjax");

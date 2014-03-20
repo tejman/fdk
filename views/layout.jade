@@ -20,44 +20,50 @@ html
           ul.nav.nav-pills.nav-justified
             li: a(href="/") home
             li: a(href="/find") find a school
-            li: a(href="/about") about
-            li: a.btn.btn-danger(href="auth/google")
-              i.fa.fa-google-plus
+            li: a(href="/admin") admin
+            li: a.btn.btn-danger(href="fdkorg.herokuapp.com/auth/google")
+              i.fa.fa-google-plus 
               | Sign In
 
     #body-content
         block content
 
     #footer.navbar-static-bottom
-      .container
         .footer-divider
         .footer-content
-          .row
-            .col-md-2
-              &nbsp;
-            #contact-form.col-md-8
-              form.form-inline(action="/contactForm/submit", role="form")
-                .row.form-top
-                  .form-group.col-md-3
-                    label.sr-only(for="emailName")
-                    input.form-control#emailName(type="text", name="name", placeholder="Your Name")
-                  
-                  .form-group.col-md-3
-                    label.sr-only(for="emailFrom")
-                    input.form-control#emailFrom(type="text", name="from", placeholder="Your E-Mail")
-
-                  .form-group.col-md-3
-                    label.sr-only(for="emailSubject") 
-                    input.form-control#emailSubject(type="text", name="subject", placeholder="Subject")
-
-                .row.form-bottom
-                  .form-group.col-md-9
-                    label.sr-only(for="emailText")
-                    textarea.form-control#emailText(type="text", name="text", placeholder="What do you want to tell us?")
-                  
-                  .form-group.col-md-2
+            #contact-form.form.form-inline(action="/contactForm/submit", role="form")
+              .row
+                .tile.col-md-2.col-md-offset-2
+                  img.tile-image(src="/images/Mail.png", alt="Mail")
+                  h6 
+                    strong What are you thinking?
+                  .form-group
                     input.btn.btn-success.btn-lg(type="submit")
 
+                .col-md-6
+                  .row.form-top
+                    .form-group.col-md-3
+                      label.sr-only(for="emailName")
+                      input.form-control#emailName(type="text", name="name", placeholder="Your Name")
+                    
+                    .form-group.col-md-3
+                      label.sr-only(for="emailFrom")
+                      input.form-control#emailFrom(type="text", name="from", placeholder="Your E-Mail")
+
+                    .form-group.col-md-3
+                      label.sr-only(for="emailSubject") 
+                      input.form-control#emailSubject(type="text", name="subject", placeholder="Subject")
+
+                  .row.form-bottom
+                    .form-group.col-md-9
+                      label.sr-only(for="emailText")
+                      textarea.form-control#emailText(type="text", name="text", placeholder="What do you want to tell us?")
+
+                //- .col-md-3.contact-desc
+                //-   p 
+                //-     |Tell us what you think of our concept. We want to know what you love 
+                //-     em and 
+                //-     |what you hate!
 
 
 

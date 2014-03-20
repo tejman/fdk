@@ -54,7 +54,7 @@ var createDonutChart = function(chartData, target){
     .attr("dy", "0em")
     .style("text-anchor", "middle")
     .attr("class", "inside")
-    .text(function(d) { return 'test'; });
+    .text(function(d) { return "Demographic Data"; });
 
   // var path = svg.selectAll("path")
   //   .data(pie(dataset.hddrives))

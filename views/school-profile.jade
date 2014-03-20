@@ -7,51 +7,71 @@ block content
 
   #profile-container
     .jumbotron.clearfix
-      .container
+      .result-item.container
         .row
-          .col-md-5
+          .col-md-5.school-search-pic.vcenter
             img(src="/images/stock-school.png")
-          .col-md-7
+
+          .col-md-7.school-search-prof.vcenter
             ul.list-group
               li.list-group-item
                 span.badge School
-                | #{school.name}
+                | #{school.name.toLowerCase()}
               li.list-group-item
                 span.badge District
-                | #{school.agencyName}
-              li.list-group-item
-                span.badge Zip
-                | #{school.zip}
+                | #{school.agencyName.toLowerCase()}
               li.list-group-item
                 span.badge State
-                | #{school.stateFull}
+                | #{school.stateFull.toLowerCase()}
               li.list-group-item
-                a(href="#") Link to school webpage
-
+                span.badge $ Needed
+                if school.balance
+                  | #{school.balance.toLowerCase()}
+                else
+                  | $ ---
   .row
-    .col-md-10.col-md-offset-1#fundraising
+    .col-md-8.col-md-offset-2#fundraising
       .row
-        .col-md-8
-          p We need lunch money!
-        .col-md-4
-          a.btn.btn-primary.btn-lg(href="#") Feed!
-      .row.fundraising-stats
-        table.table-hover.table-condensed.col-md-4.col-md-offset-2
-          tr
-            th Deliquent Accounts:
-            td hold
-          tr
-            th Avg Deliquent Balance:
-            td hold
-          tr
-            th Cost per Lunch:
-            td hold
-      .row
-        .col-md-7.col-md-offset-1
-          .fundraising.progress
-            .progress-bar(style="width: 40%")
-          .progress
-            .progress-bar(style="width: 40%")
+        .col-md-4.col-md-offset-1
+          .row
+            .col-md-12
+               h3 We need lunch money!
+          .row
+            .col-md-12
+              ul.pager
+                li.previous
+                  a(href="#")
+                    span.glyphicon.glyphicon-minus 
+                    span $5
+                li.pages
+                  input.form-control.flat(value="1")
+                li.next
+                  a(href="#")
+                    span.glyphicon.glyphicon-plus 
+                    span $5
+              a.btn.btn-primary.btn-lg(href="#") Feed!
+
+        .col-md-7
+          .row.fundraising-stats
+            table.table-hover.table-condensed.col-md-4.col-md-offset-1
+              tr
+                th Deliquent Accounts:
+                td 34
+              tr
+                th Avg Deliquent Balance:
+                td $ 10.75
+              tr
+                th Cost per Lunch:
+                td $ 1.25
+        .row.search-funding
+          .col-md-8.funding-status.vcenter
+            .fundraising.progress
+              .progress-bar(style="width: 40%")
+            .progress
+              .progress-bar(style="width: 40%")
+          .col-md-2.vcenter.funding-label
+              p.percentRaised 90
+              p.percentRaisedLabel  % &nbsp; &nbsp; Raised
 
 
   .row#stat-profile
