@@ -12,7 +12,7 @@ module.exports = {
         schoolDataModel.findById req.params.id, (err, doc)->
           JSONdoc = doc.toJSON({virtuals: true})
           console.log JSONdoc
-          res.render "schoolAdmin", {school: JSONdoc, userSchool: if result then result.profile else null}
+          res.render "school-admin", {school: JSONdoc, userSchool: if result then result.profile else null}
 
   ,update: (req, res)->
     res.send req.body.formData

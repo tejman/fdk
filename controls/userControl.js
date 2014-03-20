@@ -22,7 +22,7 @@
               virtuals: true
             });
             console.log(JSONdoc);
-            return res.render("schoolAdmin", {
+            return res.render("school-admin", {
               school: JSONdoc,
               userSchool: result ? result.profile : null
             });
