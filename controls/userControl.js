@@ -11,7 +11,7 @@
   module.exports = {
     profile: function(req, res) {
       var myID;
-      myID = req.params.id ? req.params.id(ele("531f6d9c77f4d4be42dee22f")) : void 0;
+      myID = req.params.id ? req.params.id : "531f6d9c77f4d4be42dee22f";
       return userModel.findOne({
         _schoolId: myID
       }, function(err, result) {

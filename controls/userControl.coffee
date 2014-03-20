@@ -6,7 +6,7 @@ financeDataModel = require "../models/financeModel.js"
 module.exports = {
 
   profile: (req, res) ->
-    myID = if req.params.id then req.params.id ele "531f6d9c77f4d4be42dee22f"
+    myID = if req.params.id then req.params.id else "531f6d9c77f4d4be42dee22f"
     userModel.findOne {_schoolId: myID}, (err, result)->
       if err then console.log err
       else
