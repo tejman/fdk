@@ -18,7 +18,7 @@ module.exports = {
     input = if req.query.input is "{All}" then {} else {name: new RegExp(req.query.input, "i")}
 
     console.log input
-    schoolDataModel.find input, (err, results)->
+    schoolDataModel.find(input).sort({"name": 1}).limit(500).exec (err, results)->
       fullResults = []
 
       async.forEach(results, (result, cb)->

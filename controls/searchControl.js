@@ -33,7 +33,9 @@
         name: new RegExp(req.query.input, "i")
       };
       console.log(input);
-      return schoolDataModel.find(input, function(err, results) {
+      return schoolDataModel.find(input).sort({
+        "name": 1
+      }).limit(500).exec(function(err, results) {
         var fullResults;
         fullResults = [];
         return async.forEach(results, function(result, cb) {
