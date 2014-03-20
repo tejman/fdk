@@ -10,13 +10,15 @@
 
   module.exports = {
     profile: function(req, res) {
+      var myID;
+      myID = req.params.id ? req.params.id(ele("531f6d9c77f4d4be42dee22f")) : void 0;
       return userModel.findOne({
-        _schoolId: req.params.id
+        _schoolId: myID
       }, function(err, result) {
         if (err) {
           return console.log(err);
         } else {
-          return schoolDataModel.findById(req.params.id, function(err, doc) {
+          return schoolDataModel.findById(myID, function(err, doc) {
             var JSONdoc;
             JSONdoc = doc.toJSON({
               virtuals: true

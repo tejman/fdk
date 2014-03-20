@@ -80,7 +80,7 @@ app.get("/search", searchControl.search);
 app.get('/login', authControl.login);
 app.get('/logout', authControl.logout);
 
-app.get('/admin', authControl.ensureAuthenticated, frontControl.index)
+app.get('/admin', authControl.ensureAuthenticated, userControl.profile)
 app.post("/schoolAdmin/:id", userControl.update)
 
 app.get("/schoolAdmin/:id", userControl.profile)

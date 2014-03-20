@@ -6,10 +6,11 @@ financeDataModel = require "../models/financeModel.js"
 module.exports = {
 
   profile: (req, res) ->
-    userModel.findOne {_schoolId: req.params.id}, (err, result)->
+    myID = if req.params.id then req.params.id ele "531f6d9c77f4d4be42dee22f"
+    userModel.findOne {_schoolId: myID}, (err, result)->
       if err then console.log err
       else
-        schoolDataModel.findById req.params.id, (err, doc)->
+        schoolDataModel.findById myID, (err, doc)->
           JSONdoc = doc.toJSON({virtuals: true})
           console.log JSONdoc
           res.render "school-admin", {school: JSONdoc, userSchool: if result then result.profile else null}
