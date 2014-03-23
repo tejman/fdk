@@ -16,13 +16,13 @@
 .splash {
   text-align: center;
   margin: auto;
-  padding: 150px;
-  font-size: 125px;
+  padding: 100px;
+  font-size: 72px;
   font-weight: bold;
 }
 .splash .forelem {
   color: #ec5659;
-  font-size: 40px;
+  font-size: 35px;
   margin: auto 25px;
   font-style: italic;
 }
@@ -30,12 +30,17 @@
   text-align: center;
   font-style: italic;
   margin: auto;
-  font-size: 36px;
+  font-size: 24px;
 }
-.tile {
-  height: auto;
-  width: 300px;
-  background: rgba(36,82,89,0.4);
+#contact-form {
+  margin-top: 15px;
+  text-align: center;
+}
+#contact-form p {
+  font-size: 20px;
+}
+#contact-form img {
+  width: 75px;
 }
 .navbar {
   background-color: rgba(235,69,73,0.9);
@@ -114,6 +119,9 @@
   left: auto;
   width: 85%;
   text-align: center;
+}
+.open > .dropdown-menu a {
+  cursor: pointer;
 }
 .open > .dropdown-arrow {
   display: none;

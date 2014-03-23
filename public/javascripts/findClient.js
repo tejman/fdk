@@ -328,6 +328,9 @@
         return getSearch($(this).val());
       }
     });
+    $(".dropdown-menu a").on("click", function() {
+      return console.log($(this).attr("value"));
+    });
     $(document).on("click", ".result-item", function() {
       console.log("test");
       return window.location.replace("/schoolProfile/" + $(this).attr("data-id"));

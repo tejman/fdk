@@ -14,6 +14,7 @@ $ ->
   ***************** Main Code **************
   ###
 
+  console.log bootData
   renderDonutChart bootData
   renderDonutChart bootData
   renderDonutChart bootData

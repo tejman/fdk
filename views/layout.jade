@@ -31,33 +31,29 @@ html
     #footer.navbar-static-bottom
         .footer-divider
         .footer-content
-            #contact-form.form.form-inline(action="/contactForm/submit", role="form")
+            #contact-form(action="/contactForm/submit", role="form")
               .row
-                .tile.col-md-2.col-md-offset-2
-                  img.tile-image(src="/images/Mail.png", alt="Mail")
-                  h6 
-                    strong What are you thinking?
-                  .form-group
-                    input.btn.btn-success.btn-lg(type="submit")
-
-                .col-md-6
-                  .row.form-top
-                    .form-group.col-md-3
-                      label.sr-only(for="emailName")
-                      input.form-control#emailName(type="text", name="name", placeholder="Your Name")
+                .col-md-2
+                  img(src="/images/Mail.png", alt="Mail")
+                  p get in touch
+                //- .col-md-6
+                //-   .row.form-top
+                //-     .form-group.col-md-3
+                //-       label.sr-only(for="emailName")
+                //-       input.form-control#emailName(type="text", name="name", placeholder="Your Name")
                     
-                    .form-group.col-md-3
-                      label.sr-only(for="emailFrom")
-                      input.form-control#emailFrom(type="text", name="from", placeholder="Your E-Mail")
+                //-     .form-group.col-md-3
+                //-       label.sr-only(for="emailFrom")
+                //-       input.form-control#emailFrom(type="text", name="from", placeholder="Your E-Mail")
 
-                    .form-group.col-md-3
-                      label.sr-only(for="emailSubject") 
-                      input.form-control#emailSubject(type="text", name="subject", placeholder="Subject")
+                //-     .form-group.col-md-3
+                //-       label.sr-only(for="emailSubject") 
+                //-       input.form-control#emailSubject(type="text", name="subject", placeholder="Subject")
 
-                  .row.form-bottom
-                    .form-group.col-md-9
-                      label.sr-only(for="emailText")
-                      textarea.form-control#emailText(type="text", name="text", placeholder="What do you want to tell us?")
+                //-   .row.form-bottom
+                //-     .form-group.col-md-9
+                //-       label.sr-only(for="emailText")
+                //-       textarea.form-control#emailText(type="text", name="text", placeholder="What do you want to tell us?")
 
                 //- .col-md-3.contact-desc
                 //-   p 

@@ -22,6 +22,7 @@
     /*
     ***************** Main Code **************
      */
+    console.log(bootData);
     renderDonutChart(bootData);
     renderDonutChart(bootData);
     return renderDonutChart(bootData);

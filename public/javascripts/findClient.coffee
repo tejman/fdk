@@ -288,6 +288,9 @@ $ ->
         $("#filter-button").trigger("click")
       getSearch $(this).val()
 
+  $(".dropdown-menu a").on "click", ()->
+    console.log $(this).attr("value")
+
   $(document).on "click", ".result-item", ()->
     console.log "test"
     window.location.replace("/schoolProfile/"+$(this).attr("data-id"))
@@ -296,7 +299,6 @@ $ ->
   $(document).on "click", "#filter-button", ()->
     $(this).toggleClass("active")
     filterBarToggle()
-
 
 
   $(document).on "change", "#filter-switch .switch", (e)->
