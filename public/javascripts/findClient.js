@@ -9,12 +9,13 @@
     searchResults = [];
     searchQuery = new String;
     currentlyFiltered = searchResults;
-    getSearch = function(input) {
+    getSearch = function(input, url) {
+      url = url ? url : "/search";
       input = input ? input : "{All}";
       searchQuery = input;
       return $.ajax({
         type: "GET",
-        url: "/search",
+        url: url,
         data: {
           input: input
         },
@@ -315,6 +316,7 @@
     **************** Event Handlers ********************
      */
     $("#search-button").on("click", function() {
+      $(".dropdown-toggle").text("- BROWSE BY STATE -");
       if ($("#filter-button").attr("data-original-title") === "Hide Filters") {
         $("#filter-button").trigger("click");
       }
@@ -322,14 +324,17 @@
     });
     $("#search-bar").on("keypress", function(e) {
       if (e.keyCode === 13) {
+        $(".dropdown-toggle").text("- BROWSE BY STATE -");
         if ($("#filter-button").attr("data-original-title") === "Hide Filters") {
           $("#filter-button").trigger("click");
         }
         return getSearch($(this).val());
       }
     });
-    $(".dropdown-menu a").on("click", function() {
-      return console.log($(this).attr("value"));
+    $(document).on("click", ".dropdown-menu a", function() {
+      $("#search-bar").val("");
+      $(".dropdown-toggle").text($(this).text());
+      return getSearch($(this).text(), "/browsestate");
     });
     $(document).on("click", ".result-item", function() {
       console.log("test");

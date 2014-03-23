@@ -7,13 +7,14 @@ $ ->
   searchQuery = new String
   currentlyFiltered = searchResults
 
-  getSearch = (input)->
+  getSearch = (input, url)->
+    url = if url then url else "/search"
     input = if input then input else "{All}"
     searchQuery = input
 
     $.ajax {
       type: "GET",
-      url: "/search",
+      url: url,
       data: {input: input},
       success: (data)->
         console.log data
@@ -277,6 +278,7 @@ $ ->
   ###
 
   $("#search-button").on "click", ()->
+    $(".dropdown-toggle").text("- BROWSE BY STATE -")
     if $("#filter-button").attr("data-original-title") is "Hide Filters"
       $("#filter-button").trigger("click")
     getSearch $("#search-bar").val()
@@ -284,12 +286,16 @@ $ ->
 
   $("#search-bar").on "keypress", (e)->
     if e.keyCode is 13
+      $(".dropdown-toggle").text("- BROWSE BY STATE -")
       if $("#filter-button").attr("data-original-title") is "Hide Filters"
         $("#filter-button").trigger("click")
       getSearch $(this).val()
 
-  $(".dropdown-menu a").on "click", ()->
-    console.log $(this).attr("value")
+  $(document).on "click", ".dropdown-menu a", ()->
+    $("#search-bar").val("")
+    $(".dropdown-toggle").text($(this).text())
+    getSearch $(this).text(), "/browsestate"
+
 
   $(document).on "click", ".result-item", ()->
     console.log "test"
@@ -304,7 +310,6 @@ $ ->
   $(document).on "change", "#filter-switch .switch", (e)->
     console.log $(this).find(".switch-animate").attr("class")
     filterResults(searchResults, getFilterValues())
-
 
 
   $(document).on "keyup", ".pager input", (e)->

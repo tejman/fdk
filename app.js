@@ -75,6 +75,7 @@ app.get("/find", frontControl.find);
 app.get("/popStateDropdown", schoolControl.popStateDropdown);
 app.get("/popRandomSchools", searchControl.getRandomSchools);
 app.get("/search", searchControl.search);
+app.get("/browsestate", searchControl.browseState);
 
 
 app.get('/login', authControl.login);

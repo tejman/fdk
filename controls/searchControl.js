@@ -66,6 +66,46 @@
           });
         });
       });
+    },
+    browseState: function(req, res) {
+      var input;
+      input = req.query.input === "{All}" ? {} : {
+        stateFull: new RegExp(req.query.input, "i")
+      };
+      console.log(input);
+      return schoolDataModel.find(input).sort({
+        "name": 1
+      }).limit(500).exec(function(err, results) {
+        var fullResults;
+        fullResults = [];
+        return async.forEach(results, function(result, cb) {
+          return financeDataModel.findOne({
+            zip: result.zip
+          }, function(err, doc) {
+            var JSONresult;
+            JSONresult = result.toJSON({
+              virtuals: true
+            });
+            JSONresult.zipProfile = doc === null ? {} : doc.toJSON({
+              virtuals: true
+            });
+            fullResults.push(JSONresult);
+            if (err) {
+              return cb(err);
+            } else {
+              return cb();
+            }
+          });
+        }, function(err) {
+          if (err) {
+            console.log(err);
+          }
+          return res.send({
+            schools: fullResults,
+            query: req.query.input
+          });
+        });
+      });
     }
   };
 
