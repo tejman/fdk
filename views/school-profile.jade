@@ -44,7 +44,8 @@ block content
                     span.glyphicon.glyphicon-usd
                   input.form-control(type="number", placeholder="5", min="0", step="5")
                   span.input-group-addon
-                    a.btn.btn-success(href="/checkout") Feed!
+                    form(action="", method="POST")
+                        script(src="https://checkout.stripe.com/v2/checkout.js" class="stripe-button", data-key="pk_test_6pRNASCoBOKtIshFeQd4XMUh", data-amount="2000", data-name="Tots for Tots", data-description="2 widgets ($20.00)", data-image="/images/stock-school.png") 
 
         .col-md-7
           .fundraising-stats

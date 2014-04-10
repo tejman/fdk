@@ -5,7 +5,7 @@
     /*
     ***************** Function Definitions **************
      */
-    var renderDonutChart;
+    var renderDonutChart, stripeStyle;
     renderDonutChart = function(schoolData) {
       var chartData, keys;
       keys = ["pacificIsland", "black", "white", "hispanic", "multiRacial", "asian", "nativeAmerican"];
@@ -24,9 +24,25 @@
      */
     console.log(bootData);
     renderDonutChart(bootData);
-    return $(document).on("change", "#donation input", function() {
+    $(document).on("change", "#donation input", function() {
       return console.log("test");
     });
+    stripeStyle = function() {
+      var $stripeButton, $stripeButtonSpan;
+      console.log("timer");
+      if ($(".stripe-button-el").length) {
+        console.log("stripe fxns");
+        $stripeButton = $(".stripe-button-el");
+        $stripeButtonSpan = $stripeButton.find("span");
+        console.log($stripeButton, $stripeButtonSpan);
+        $stripeButton.css("background", "#2CC36B");
+        $stripeButtonSpan.css("background", "#2CC36B");
+        return $stripeButtonSpan.text("Feed!");
+      } else {
+        return false;
+      }
+    };
+    return stripeStyle();
 
     /*
     ***************** Click Handlers **************
