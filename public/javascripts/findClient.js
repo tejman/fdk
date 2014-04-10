@@ -62,6 +62,7 @@
         }
       }
       $("#search-results").empty();
+      console.log(pageResults);
       jade.render($("#search-results")[0], "results", {
         schools: pageResults
       });

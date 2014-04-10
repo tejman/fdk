@@ -10,14 +10,19 @@ $ ->
 
     createDonutChart(chartData, "#stat-profile")
 
+
+
   ###
   ***************** Main Code **************
   ###
 
   console.log bootData
   renderDonutChart bootData
-  renderDonutChart bootData
-  renderDonutChart bootData
+
+  $(document).on "change", "#donation input", ()->
+    console.log "test"
+
+
 
 
   ###

@@ -38,22 +38,17 @@ block content
                h3 We need lunch money!
           .row
             .col-md-12
-              ul.pager
-                li.previous
-                  a(href="#")
-                    span.glyphicon.glyphicon-minus 
-                    span $5
-                li.pages
-                  input.form-control.flat(value="1")
-                li.next
-                  a(href="#")
-                    span.glyphicon.glyphicon-plus 
-                    span $5
-              a.btn.btn-success.btn-lg(href="/checkout") Feed!
+              #donation.form-group
+                .input-group
+                  span.input-group-addon
+                    span.glyphicon.glyphicon-usd
+                  input.form-control(type="number", placeholder="5", min="0", step="5")
+                  span.input-group-addon
+                    a.btn.btn-success(href="/checkout") Feed!
 
         .col-md-7
-          .row.fundraising-stats
-            table.table-hover.table-condensed.col-md-4.col-md-offset-1
+          .fundraising-stats
+            table.table-hover.table-condensed
               tr
                 th Deliquent Accounts:
                 td 34

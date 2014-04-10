@@ -37,12 +37,17 @@ var createDonutChart = function(chartData, target){
   g.append("path")
       .attr("d", arc)
       .style("fill", function(d) { return color(d.data.name); })
-      // .on("mouseenter", function(d) {
-      //         console.log("mousein")
-      // })
-      // .on("mouseout", function(d) {
-      //          console.log("mouseout")
-      // });
+      .on("mouseover", function(d) {
+          console.log("mousein")
+          $(this).closest("svg").find("text.inside").text(d.data.name + "\n" + d.data.value)
+          $(this).closest("svg").find("circle").attr("fill", "rgba(36, 82, 89, .7)")
+
+      })
+      .on("mouseleave", function(d) {
+         console.log("path out")
+         $(this).closest("svg").find("text.inside").text("Demographic Data")
+         $(this).closest("svg").find("circle").attr("fill", "#F1F1F1")
+      });
 
   svg.append("circle")
     .attr("cx", 0)
@@ -68,6 +73,7 @@ var createDonutChart = function(chartData, target){
   //     .attr("transform", function(d) { return "translate(" + arc.centroid(d) + ")"; })
   //     .attr("dy", ".35em")
   //     .style("text-anchor", "middle")
+  //     .css("display", "none")
   //     .text(function(d) { return d.data.name; });
 
 }

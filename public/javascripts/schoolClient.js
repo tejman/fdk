@@ -24,8 +24,9 @@
      */
     console.log(bootData);
     renderDonutChart(bootData);
-    renderDonutChart(bootData);
-    return renderDonutChart(bootData);
+    return $(document).on("change", "#donation input", function() {
+      return console.log("test");
+    });
 
     /*
     ***************** Click Handlers **************

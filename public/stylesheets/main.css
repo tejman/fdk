@@ -430,7 +430,27 @@
 }
 #fundraising .btn {
   display: inline-block;
-  margin-top: -16px;
+}
+#donation .glyphicon-usd {
+  padding: 5px;
+}
+#donation .input-group-addon {
+  padding: 0;
+  border: none;
+}
+#donation .input-group {
+  max-width: 85%;
+}
+#donation .form-control {
+  text-align: center;
+  background-color: rgba(255,255,255,0.8);
+}
+#donation .form-control:focus {
+  border-color: #2ecc71;
+}
+#donation .input-group.focus .input-group-addon {
+  background-color: #2ecc71;
+  border-color: #2ecc71;
 }
 .progress {
   background-color: #9eafaf;

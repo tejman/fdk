@@ -55,6 +55,7 @@ $ ->
         pageResults = finalResults
 
     $("#search-results").empty()
+    console.log pageResults
     jade.render $("#search-results")[0], "results", {schools: pageResults}
     newPageNum = if pageNum then pageNum else 1
     $("#search-results").attr("data-page", newPageNum)
